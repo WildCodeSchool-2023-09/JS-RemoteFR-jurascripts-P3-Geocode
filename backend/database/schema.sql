@@ -53,18 +53,11 @@ CREATE TABLE `plug` (
   `prise_type_autre` boolean
 );
 
-ALTER TABLE `terminal` ADD CONSTRAINT `terminal_FK` FOREIGN KEY (`station_id`) REFERENCES `station` (`id`);
-
 CREATE TABLE `user_reservation` (
   `user_id` int,
   `reservation_user_id` int,
   PRIMARY KEY (`user_id`, `reservation_user_id`)
 );
-
-ALTER TABLE `user_reservation` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-
-ALTER TABLE `user_reservation` ADD FOREIGN KEY (`reservation_user_id`) REFERENCES `reservation` (`user_id`);
-
 
 CREATE TABLE `station_reservation` (
   `station_id` int,
@@ -72,12 +65,15 @@ CREATE TABLE `station_reservation` (
   PRIMARY KEY (`station_id`, `reservation_station_id`)
 );
 
-ALTER TABLE `station_reservation` ADD FOREIGN KEY (`station_id`) REFERENCES `station` (`id`);
 
+
+ALTER TABLE `terminal` ADD CONSTRAINT `terminal_FK` FOREIGN KEY (`station_id`) REFERENCES `station` (`id`);
+ALTER TABLE `reservation` ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `user_reservation` ADD CONSTRAINT `fk_user_reservation_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `user_reservation` ADD CONSTRAINT `fk_user_reservation_reservation` FOREIGN KEY (`reservation_user_id`) REFERENCES `reservation` (`user_id`);
+ALTER TABLE `reservation` ADD CONSTRAINT `fk_station_id` FOREIGN KEY (`station_id`) REFERENCES `station` (`id`);
+ALTER TABLE `station_reservation` ADD CONSTRAINT `fk_station_reservation_station` FOREIGN KEY (`station_id`) REFERENCES `station` (`id`);
 ALTER TABLE `station_reservation` ADD FOREIGN KEY (`reservation_station_id`) REFERENCES `reservation` (`station_id`);
-
-
 ALTER TABLE `message` ADD CONSTRAINT `message_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-
 ALTER TABLE `terminal` ADD CONSTRAINT `plug_FK` FOREIGN KEY (`plug_id`) REFERENCES `plug` (`id`);
 
