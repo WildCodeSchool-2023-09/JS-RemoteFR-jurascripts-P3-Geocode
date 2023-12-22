@@ -1,40 +1,20 @@
-import Counter from "./components/Counter";
-import logo from "./assets/logo.svg";
-
-import "./App.css";
+import "./css/App.css";
+import { Link } from "react-router-dom";
+import logo from "./assets/logo.png";
+import terminal from "./assets/born.png";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React !</p>
-
-        <Counter />
-
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <img className="logo_app" src={logo} alt="logo de GéoCode" />
+      <Link className="btn_app" to="/home/presentation">
+        En Route
+      </Link>
+      <img
+        className="terminal_app"
+        src={terminal}
+        alt="Borne de rechargement"
+      />
     </div>
   );
 }

@@ -1,0 +1,46 @@
+@import "./Variables.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: var(--background);
+  background-size: contain;
+}
+
+.logo_app {
+  margin-left: 1rem;
+  margin-top: 4rem;
+  height: 232px;
+}
+
+.btn_app {
+  margin-top: 3rem;
+  padding: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  width: 50%;
+  background-color: var(--background-grey);
+  color: var(--color-white);
+  border: 3px solid var(--color-green);
+  border-radius: 1.7rem;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn_app:hover {
+  box-shadow: 6px 6px 13px black;
+}
+
+.terminal_app {
+  margin-top: 2.2rem;
+  height: 400px;
+}
