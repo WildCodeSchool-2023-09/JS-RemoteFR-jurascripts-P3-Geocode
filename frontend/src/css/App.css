@@ -32,6 +32,8 @@ body {
   color: var(--color-white);
   border: 3px solid var(--color-green);
   border-radius: 1.7rem;
+  text-decoration: none;
+  text-align: center;
 }
 
 .btn_app:hover {

@@ -7,10 +7,8 @@ function App() {
   return (
     <div className="App">
       <img className="logo_app" src={logo} alt="logo de GéoCode" />
-      <Link to="/home/presentation">
-        <button className="btn_app" type="button">
-          En Route
-        </button>
+      <Link className="btn_app" to="/home/presentation">
+        En Route
       </Link>
       <img
         className="terminal_app"
