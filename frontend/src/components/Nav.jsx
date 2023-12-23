@@ -26,6 +26,11 @@ function Nav() {
             Carte
           </a>
         </li>
+        <li className="navbar_item slide_in_down_4">
+          <a href="/" className="navbar_link">
+            Information
+          </a>
+        </li>
       </ul>
       <button
         className="navbar_burger"

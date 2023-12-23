@@ -51,7 +51,7 @@ a {
     right: -100vw;
     top: 0;
     width: 0;
-    height: 48vh;
+    height: 55vh;
     padding: 2rem;
     visibility: hidden;
     transition: all 0.8s ease-in-out;
@@ -66,7 +66,7 @@ a {
   .navbar_link {
     display: block;
     text-align: center;
-    width: 6.9rem;
+    width: 8.3rem;
     padding: 0.1rem;
     font-size: 4.5vw;
     border: 3px solid var(--color-green);
@@ -145,5 +145,8 @@ a {
 
   .show_nav .slide_in_down_3 {
     transition: all 1.2s ease-in-out;
+  }
+  .show_nav .slide_in_down_4 {
+    transition: all 1.3s ease-in-out;
   }
 }
