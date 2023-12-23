@@ -1,0 +1,149 @@
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  min-height: 75px;
+  padding: 1rem;
+  background-color: var(--background-grey);
+  color: var(--color-white);
+}
+
+.navbar_links {
+  display: flex;
+}
+
+.navbar_link {
+  padding: 0 0.3rem;
+  color: inherit;
+}
+
+.navbar_burger {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  color: var(--color-green);
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    background: transparent;
+  }
+
+  .navbar_links {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: -100vw;
+    top: 0;
+    width: 0;
+    height: 48vh;
+    padding: 2rem;
+    visibility: hidden;
+    transition: all 0.8s ease-in-out;
+  }
+
+  .show_nav .navbar_links {
+    right: 0;
+    width: 20vw;
+    visibility: visible;
+  }
+
+  .navbar_link {
+    display: block;
+    text-align: center;
+    width: 6.9rem;
+    padding: 0.1rem;
+    font-size: 4.5vw;
+    border: 3px solid var(--color-green);
+    border-radius: 15px;
+    background-color: var(--background-grey);
+    margin-top: 0.9rem;
+  }
+
+  .burger_bar,
+  .burger_bar::before,
+  .burger_bar::after {
+    display: block;
+    width: 30px;
+    height: 4px;
+    position: relative;
+    border-radius: 3px;
+    background: var(--color-green);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .burger_bar::before,
+  .burger_bar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .burger_bar::before {
+    transform: translateY(-12px);
+  }
+
+  .burger_bar::after {
+    transform: translateY(12px);
+  }
+
+  .navbar_burger {
+    border: none;
+    display: block;
+    position: fixed;
+    top: 9rem;
+    right: 1rem;
+  }
+
+  .navbar_burger:hover {
+    cursor: pointer;
+  }
+
+  .show_nav .burger_bar {
+    width: 0;
+    background: transparent;
+  }
+
+  .show_nav .burger_bar::before {
+    transform: rotate(45deg);
+  }
+
+  .show_nav .burger_bar::after {
+    transform: rotate(-45deg);
+  }
+
+  .navbar_item {
+    transform: translateY(100vh);
+  }
+
+  .show_nav .navbar_item {
+    transform: translateY(0);
+  }
+
+  .show_nav .slide_in_down_1 {
+    transition: all 1s ease-in-out;
+  }
+
+  .show_nav .slide_in_down_2 {
+    transition: all 1.1s ease-in-out;
+  }
+
+  .show_nav .slide_in_down_3 {
+    transition: all 1.2s ease-in-out;
+  }
+}

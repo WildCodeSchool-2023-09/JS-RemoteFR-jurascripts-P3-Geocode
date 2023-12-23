@@ -1,0 +1,37 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background: var(--background);
+  background-size: contain;
+}
+
+.container {
+  height: 198px;
+}
+
+.head {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.logo_home {
+  height: 130px;
+  margin: auto;
+  grid-column: 4 / 8;
+  grid-row: 1 / 5;
+}
+
+.user_home {
+  height: 75px;
+  margin: auto;
+  grid-column: 1 / 4;
+  grid-row: 4 / 6;
+}
+
+.navbar_burger {
+  height: 35px;
+  grid-column: 9 / 10;
+  grid-row: 5 / 6;
+}
