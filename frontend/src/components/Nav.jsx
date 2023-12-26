@@ -22,7 +22,7 @@ function Nav() {
           </a>
         </li>
         <li className="navbar_item slide_in_down_3">
-          <a href="/" className="navbar_link">
+          <a href="/home/card" className="navbar_link">
             Carte
           </a>
         </li>
