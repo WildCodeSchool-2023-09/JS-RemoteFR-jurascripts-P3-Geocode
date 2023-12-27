@@ -19,7 +19,7 @@ body {
 .logo_app {
   margin-left: 1rem;
   margin-top: 4rem;
-  height: 232px;
+  height: 25%;
 }
 
 .btn_app {
@@ -28,6 +28,7 @@ body {
   font-size: 1.4rem;
   font-weight: 700;
   width: 50%;
+  max-width: 220px;
   background-color: var(--background-grey);
   color: var(--color-white);
   border: 3px solid var(--color-green);
@@ -42,5 +43,5 @@ body {
 
 .terminal_app {
   margin-top: 2.2rem;
-  height: 400px;
+  height: 40%;
 }
