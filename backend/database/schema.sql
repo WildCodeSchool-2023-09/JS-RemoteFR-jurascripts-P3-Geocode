@@ -2,7 +2,7 @@
 
 CREATE TABLE `plug` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `serial` varchar(100) NOT NULL,
+  `serial` varchar(100) ,
   `prise_type_ef` boolean,
   `prise_type_2` boolean,
   `prise_type_combo_ccs` boolean,
@@ -17,7 +17,7 @@ CREATE TABLE `station` (
   `nom_station` varchar(150),
   `localisation` varchar(150),
   `condition_acces` varchar(50),
-  `horaires` varchar(30),
+  `horaires` varchar(255),
   `longitude` varchar(50),
   `latitude` varchar(50)
 );
@@ -26,8 +26,8 @@ CREATE TABLE `station` (
 
 CREATE TABLE `terminal` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `station_id` int NOT NULL,
-  `operator` boolean NOT NULL,
+  `station_id` int ,
+  `nom_operateur` VARCHAR(255),
   `puissance_nominale` int,
   `plug_id` int,
   `status` boolean DEFAULT true,
