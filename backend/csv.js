@@ -4,6 +4,7 @@ const filePath = "./data/born_data.csv";
 const Papa = require("papaparse");
 const fs = require("fs");
 const database = require("./database/client");
+const plugData = require("./data/plugData");
 
 const csv = async () => {
   try {
@@ -13,7 +14,6 @@ const csv = async () => {
     const parsePromise = new Promise((resolve, reject) => {
       Papa.parse(csvFile, {
         header: true,
-        dynamicTyping: true,
         complete: (result) => {
           resolve(result.data);
         },
@@ -27,23 +27,111 @@ const csv = async () => {
 
     /* ******************************* PlugData ****************************** */
 
-    const plugData = dataBorn.map((rowData) => {
-      return {
-        serial: rowData.num_pdl,
-        prise_type_ef: rowData.prise_type_ef,
-        prise_type_2: rowData.prise_type_2,
-        prise_type_combo_ccs: rowData.prise_type_combo_ccs,
-        prise_type_chademo: rowData.prise_type_chademo,
-        prise_type_autre: rowData.prise_type_autre,
-      };
-    });
+    /* ******************************* Normalize Boolean ****************************** */
+    const normalizeBoolean = (value) => {
+      if (typeof value === "boolean") {
+        return value;
+      }
+      if (typeof value === "string") {
+        const lowerCaseValue = value.toLowerCase();
+        return lowerCaseValue === "true" || lowerCaseValue === "1";
+      }
+      return Boolean(value);
+    };
+
+    /* ******************************* Plug Condition ****************************** */
+
+    const conditionPlug = (data) => {
+      const ef = normalizeBoolean(data.prise_type_ef);
+      const type2 = normalizeBoolean(data.prise_type_2);
+      const comboCCS = normalizeBoolean(data.prise_type_combo_ccs);
+      const chademo = normalizeBoolean(data.prise_type_chademo);
+      const autre = normalizeBoolean(data.prise_type_autre);
+
+      if (ef && !type2 && !comboCCS && !chademo && autre) {
+        return 1;
+      }
+      if (ef && type2 && !comboCCS && !chademo && autre) {
+        return 2;
+      }
+      if (ef && !type2 && !comboCCS && !chademo && !autre) {
+        return 3;
+      }
+      if (ef && type2 && !comboCCS && !chademo && !autre) {
+        return 4;
+      }
+      if (ef && type2 && comboCCS && chademo && !autre) {
+        return 5;
+      }
+      if (!ef && !type2 && !comboCCS && !chademo && autre) {
+        return 6;
+      }
+      if (!ef && !type2 && !comboCCS && chademo && autre) {
+        return 7;
+      }
+      if (!ef && type2 && !comboCCS && !chademo && autre) {
+        return 8;
+      }
+      if (!ef && !type2 && !comboCCS && !chademo && !autre) {
+        return 9;
+      }
+      if (!ef && !type2 && !comboCCS && chademo && !autre) {
+        return 10;
+      }
+      if (!ef && !type2 && comboCCS && !chademo && !autre) {
+        return 11;
+      }
+      if (!ef && !type2 && comboCCS && chademo && !autre) {
+        return 12;
+      }
+      if (!ef && type2 && !comboCCS && !chademo && !autre) {
+        return 13;
+      }
+      if (!ef && type2 && !comboCCS && chademo && !autre) {
+        return 14;
+      }
+      if (!ef && type2 && comboCCS && !chademo && !autre) {
+        return 15;
+      }
+      if (!ef && type2 && comboCCS && chademo && !autre) {
+        return 16;
+      }
+      if (ef && type2 && comboCCS && chademo && autre) {
+        return 17;
+      }
+      if (!ef && type2 && comboCCS && chademo && autre) {
+        return 18;
+      }
+      if (ef && type2 && !comboCCS && chademo && !autre) {
+        return 19;
+      }
+      if (ef && !type2 && comboCCS && !chademo && !autre) {
+        return 20;
+      }
+      if (ef && type2 && comboCCS && !chademo && !autre) {
+        return 21;
+      }
+      if (ef && !type2 && comboCCS && !chademo && autre) {
+        return 22;
+      }
+      if (ef && !type2 && !comboCCS && chademo && !autre) {
+        return 23;
+      }
+      return 0;
+    };
 
     /* ******************************* TerminalData ****************************** */
 
     const terminalData = dataBorn.map((rowData) => {
       return {
+        id_station_itinerance: rowData.id_station_itinerance,
         nom_operateur: rowData.nom_operateur,
         puissance_nominale: rowData.puissance_nominale,
+        prise_type_ef: rowData.prise_type_ef,
+        prise_type_2: rowData.prise_type_2,
+        prise_type_combo_ccs: rowData.prise_type_combo_ccs,
+        prise_type_chademo: rowData.prise_type_chademo,
+        prise_type_autre: rowData.prise_type_autre,
       };
     });
 
@@ -94,16 +182,18 @@ const csv = async () => {
     /* ******************************* Plug ****************************** */
 
     const plugPromises = plugData.map((data) => {
-      return database.query(
-        "INSERT INTO plug (serial, prise_type_ef, prise_type_2, prise_type_combo_ccs, prise_type_chademo, prise_type_autre) VALUES (?, ?, ?, ?, ?, ?)",
-        [
-          data.serial,
-          data.prise_type_ef === "True" ? 1 : 0,
-          data.prise_type_2 === "True" ? 1 : 0,
-          data.prise_type_combo_ccs === "True" ? 1 : 0,
-          data.prise_type_chademo === "True" ? 1 : 0,
-          data.prise_type_autre === "True" ? 1 : 0,
-        ]
+      return queries.push(
+        database.query(
+          "INSERT INTO plug ( id ,prise_type_ef, prise_type_2, prise_type_combo_ccs, prise_type_chademo, prise_type_autre) VALUES (?,?, ?, ?, ?, ?)",
+          [
+            data.id,
+            data.prise_type_ef,
+            data.prise_type_2,
+            data.prise_type_combo_ccs,
+            data.prise_type_chademo,
+            data.prise_type_autre,
+          ]
+        )
       );
     });
     await Promise.all(plugPromises);
@@ -113,8 +203,13 @@ const csv = async () => {
 
     const terminalPromises = terminalData.map((data) => {
       return database.query(
-        "INSERT INTO terminal (nom_operateur, puissance_nominale) VALUES (?, ?)",
-        [data.nom_operateur, data.puissance_nominale]
+        "INSERT INTO terminal (nom_operateur, station_itinerance, puissance_nominale, plug_id) VALUES (?,?, ?, ?)",
+        [
+          data.nom_operateur,
+          data.id_station_itinerance,
+          data.puissance_nominale,
+          conditionPlug(data),
+        ]
       );
     });
     await Promise.all(terminalPromises);

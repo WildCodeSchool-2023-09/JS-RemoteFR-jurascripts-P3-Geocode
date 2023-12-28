@@ -2,7 +2,6 @@
 
 CREATE TABLE `plug` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `serial` varchar(100) ,
   `prise_type_ef` boolean,
   `prise_type_2` boolean,
   `prise_type_combo_ccs` boolean,
@@ -28,6 +27,7 @@ CREATE TABLE `terminal` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `station_id` int ,
   `nom_operateur` VARCHAR(255),
+  `station_itinerance` VARCHAR(255),
   `puissance_nominale` int,
   `plug_id` int,
   `status` boolean DEFAULT true,
