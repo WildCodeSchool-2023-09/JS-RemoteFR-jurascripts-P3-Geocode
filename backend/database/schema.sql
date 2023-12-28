@@ -2,7 +2,6 @@
 
 CREATE TABLE `plug` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `serial` varchar(100) ,
   `prise_type_ef` boolean,
   `prise_type_2` boolean,
   `prise_type_combo_ccs` boolean,
