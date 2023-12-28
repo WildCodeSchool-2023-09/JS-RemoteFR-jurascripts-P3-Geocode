@@ -27,7 +27,6 @@ CREATE TABLE `terminal` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `station_id` int ,
   `nom_operateur` VARCHAR(255),
-  `station_itinerance` VARCHAR(255),
   `puissance_nominale` int,
   `plug_id` int,
   `status` boolean DEFAULT true,

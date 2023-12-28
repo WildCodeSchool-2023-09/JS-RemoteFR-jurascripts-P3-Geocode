@@ -122,7 +122,6 @@ const csv = async () => {
 
     const terminalData = dataBorn.map((rowData) => {
       return {
-        id_station_itinerance: rowData.id_station_itinerance,
         nom_operateur: rowData.nom_operateur,
         puissance_nominale: rowData.puissance_nominale,
         prise_type_ef: rowData.prise_type_ef,
@@ -201,13 +200,8 @@ const csv = async () => {
 
     const terminalPromises = terminalData.map((data) => {
       return database.query(
-        "INSERT INTO terminal (nom_operateur, station_itinerance, puissance_nominale, plug_id) VALUES (?,?, ?, ?)",
-        [
-          data.nom_operateur,
-          data.id_station_itinerance,
-          data.puissance_nominale,
-          conditionPlug(data),
-        ]
+        "INSERT INTO terminal (nom_operateur, puissance_nominale, plug_id) VALUES (?, ?, ?)",
+        [data.nom_operateur, data.puissance_nominale, conditionPlug(data)]
       );
     });
     await Promise.all(terminalPromises);
