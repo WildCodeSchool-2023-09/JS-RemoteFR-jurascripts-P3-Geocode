@@ -66,7 +66,7 @@ CREATE TABLE `user` (
   `nickname` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `address` varchar(255),
+  `city` varchar(255),
   `register_date` timestamp NOT NULL,
   `is_admin` boolean NOT NULL DEFAULT false,
   `reservation_id` int,
