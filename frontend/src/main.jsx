@@ -8,6 +8,7 @@ import Presentation from "./pages/Presentation";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import Card from "./pages/Card";
+import Connect from "./pages/Connect";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/home/card",
         element: <Card />,
+      },
+      {
+        path: "/home/connect",
+        element: <Connect />,
       },
     ],
   },
