@@ -1,13 +1,7 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-
-// Load environment variables from .env file
 require("dotenv").config();
 
-// Import Faker library for generating fake data
-const { faker } = require("@faker-js/faker");
-
-// Import database client
 const database = require("./database/client");
+const userData = require("./data/userData");
 
 const seed = async () => {
   try {
@@ -15,21 +9,36 @@ const seed = async () => {
     // See why here: https://eslint.org/docs/latest/rules/no-await-in-loop
     const queries = [];
 
-    /* ************************************************************************* */
+    /* ******************************* Truncates ****************************** */
 
-    // Generating Seed Data
+    await database.query(
+      "SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0"
+    );
+    await database.query("truncate user");
 
-    // Optional: Truncate tables (remove existing data)
-    await database.query("truncate item");
+    await database.query(
+      "SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1)"
+    );
 
-    // Insert fake data into the 'item' table
-    for (let i = 0; i < 10; i += 1) {
-      queries.push(
-        database.query("insert into item(title) values (?)", [
-          faker.lorem.word(),
-        ])
+    /* ******************************* User ****************************** */
+
+    const userPromises = userData.map((data) => {
+      return database.query(
+        "INSERT INTO user (firstname, lastname, nickname, email, password, city, register_date, is_admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        [
+          data.firstname,
+          data.lastname,
+          data.nickname,
+          data.email,
+          data.password,
+          data.city,
+          data.register_date,
+          data.is_admin,
+        ]
       );
-    }
+    });
+    await Promise.all(userPromises);
+    console.info("All rows inserted into user table");
 
     /* ************************************************************************* */
 
