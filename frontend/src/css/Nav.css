@@ -17,17 +17,34 @@ a {
   width: 100%;
   min-height: 75px;
   padding: 1rem;
-  background-color: var(--background-grey);
   color: var(--color-white);
 }
 
 .navbar_links {
   display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: -107px;
+  top: 247px;
+}
+
+.navbar_item:hover {
+  transition: 0.5s ease-in-out;
+  transform: translateX(107px);
 }
 
 .navbar_link {
-  padding: 0 0.3rem;
-  color: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  font-size: 1.3rem;
+  color: var(--color-green);
+  background: white;
+  border: 3px solid var(--color-green);
+  border-radius: 0 17px 17px 0;
+  height: 38px;
+  width: 140px;
 }
 
 .navbar_burger {
@@ -38,18 +55,37 @@ a {
   display: none;
 }
 
+.link_accueil::after {
+  content: url(../assets/accueil.png);
+}
+
+.link_profil::after {
+  content: url(../assets/utilisateur.png);
+}
+
+.link_carte::after {
+  content: url(../assets/francais.png);
+}
+
+.link_information::after {
+  content: url(../assets/information.png);
+}
+
 @media screen and (max-width: 767px) {
   .navbar {
     background: transparent;
   }
 
+  ::after {
+    display: none;
+  }
+
   .navbar_links {
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed;
-    right: -100vw;
-    top: 0;
+    left: 59vw;
+    top: 25px;
     width: 0;
     height: 55vh;
     padding: 2rem;
@@ -66,13 +102,15 @@ a {
   .navbar_link {
     display: block;
     text-align: center;
-    width: 8.3rem;
+    height: 19px;
+    width: 110px;
     padding: 0.1rem;
     font-size: 4.5vw;
     border: 3px solid var(--color-green);
     border-radius: 15px;
     background-color: var(--background-grey);
     margin-top: 0.9rem;
+    color: var(--color-white);
   }
 
   .burger_bar,
