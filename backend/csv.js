@@ -25,8 +25,6 @@ const csv = async () => {
 
     const dataBorn = await parsePromise;
 
-    /* ******************************* PlugData ****************************** */
-
     /* ******************************* Normalize Boolean ****************************** */
     const normalizeBoolean = (value) => {
       if (typeof value === "boolean") {
