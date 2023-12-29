@@ -1,0 +1,53 @@
+@import "./Variables.css";
+
+.user_login {
+  border: 2px solid var(--color-white);
+  background-color: var(--color-green);
+  border-radius: 15px;
+  padding: 0.4rem 0.7rem;
+  width: 90%;
+  margin-bottom: 0.5rem;
+  color: var(--color-white);
+}
+.user_login:placeholder-shown {
+  text-align: center;
+  font-style: italic;
+}
+
+.pw_login {
+  border: 2px solid var(--color-white);
+  background-color: var(--color-green);
+  border-radius: 15px;
+  padding: 0.4rem 0.7rem;
+  width: 90%;
+  margin-bottom: 0.5rem;
+}
+
+.pw_login:placeholder-shown {
+  text-align: center;
+  font-style: italic;
+}
+
+.memori_btn_login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.memori_login {
+  display: flex;
+}
+
+.p_login {
+  font-size: 0.6em;
+  color: var(--background-grey);
+}
+
+.btn_login {
+  font-size: 0.7em;
+  font-weight: 600;
+  border: 2px solid var(--color-white);
+  background-color: var(--color-green);
+  border-radius: 15px;
+  padding: 0.4rem 1.3rem;
+}

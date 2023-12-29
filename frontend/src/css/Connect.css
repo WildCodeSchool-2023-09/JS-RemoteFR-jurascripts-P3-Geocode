@@ -55,7 +55,7 @@
 .p_pw_connect {
   margin: 0;
   color: var(--color-white);
-  font-size: 0.6em;
+  font-size: 0.7em;
 }
 
 .p_sign_connect {
@@ -63,7 +63,7 @@
   background-color: var(--color-deep-green);
   border: 2px solid var(--color-white);
   color: #001aff;
-  padding: 0.2rem 0;
+  padding: 0.3rem 0;
   border-radius: 15px;
   width: 55%;
   font-weight: 600;
