@@ -5,6 +5,8 @@ class UserManager extends AbstractManager {
     super({ table: "user" });
   }
 
+  /* ******************************* Create ****************************** */
+
   async create(nickname, email, password, registerDate) {
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (nickname, email, password, register_date) VALUES (?,?,?,?)`[
@@ -13,6 +15,8 @@ class UserManager extends AbstractManager {
     );
     return result.insertId;
   }
+
+  /* ******************************* Read ****************************** */
 
   async readAll() {
     const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
@@ -29,16 +33,16 @@ class UserManager extends AbstractManager {
 
   async readUser(nickname) {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE nickname = ?`,
-      [nickname]
+      `SELECT * FROM ${this.table} WHERE nickname LIKE ?`,
+      [`%${nickname}%`]
     );
     return rows;
   }
 
   async readDate(registerDate) {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE register_date = ?`,
-      [registerDate]
+      `SELECT * FROM ${this.table} WHERE register_date LIKE ?`,
+      [`%${registerDate}%`]
     );
     return rows;
   }
@@ -47,6 +51,8 @@ class UserManager extends AbstractManager {
     const [rows] = await this.database.query(`SELECT id FROM ${this.table}`);
     return rows[-1];
   }
+
+  /* ******************************* Update ****************************** */
 
   async update(nickname, id) {
     const [result] = await this.database.query(
