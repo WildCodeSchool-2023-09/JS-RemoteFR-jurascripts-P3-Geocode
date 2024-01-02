@@ -62,7 +62,7 @@
   font-size: 0.8em;
   background-color: var(--color-deep-green);
   border: 2px solid var(--color-white);
-  color: #001aff;
+  color: var(--color-link);
   padding: 0.3rem 0;
   border-radius: 15px;
   width: 55%;
