@@ -86,19 +86,22 @@ a {
     justify-content: center;
     align-items: center;
     position: fixed;
-    left: 59vw;
+    left: 52vw;
     top: 25px;
     width: 0;
     height: 55vh;
     padding: 2rem;
     visibility: hidden;
-    transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease-out;
   }
 
   .show_nav .navbar_links {
+    background-color: #525b5aed;
     right: 0;
-    width: 20vw;
+    top: 0;
     visibility: visible;
+    width: 34vw;
+    height: 100vh;
   }
 
   .navbar_link {
@@ -106,13 +109,25 @@ a {
     text-align: center;
     height: 19px;
     width: 110px;
-    padding: 0.1rem;
-    font-size: 18px;
-    border: 3px solid var(--color-green);
+    padding: 2.5rem 0;
+    font-size: 20px;
+    border: none;
     border-radius: 15px;
-    background-color: #525b5a;
-    margin-top: 0.4rem;
+    background-color: inherit;
     color: var(--color-white);
+  }
+
+  .navbar_item::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 10vw;
+    height: 1px;
+    background: var(--color-white);
+  }
+
+  .navbar_item:last-child::after {
+    display: none;
   }
 
   .burger_bar,
@@ -123,7 +138,7 @@ a {
     height: 4px;
     position: relative;
     border-radius: 3px;
-    background: var(--color-green);
+    background: var(--color-white);
     transition: all 0.4s ease-in-out;
   }
 
@@ -146,7 +161,7 @@ a {
     border: none;
     display: block;
     position: fixed;
-    top: 9rem;
+    top: 1rem;
     right: 1rem;
   }
 
