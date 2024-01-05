@@ -36,7 +36,7 @@ SELECT * FROM ${this.table} WHERE id = ?`,
   async readGeoPoint(longitude, latitude) {
     const [rows] = await this.database.query(
       `
-SELECT * FROM ${this.table} WHERE longitude = ?, latitude = ?`,
+SELECT * FROM ${this.table} WHERE longitude = ? AND latitude = ? `,
       [longitude, latitude]
     );
     return rows;
