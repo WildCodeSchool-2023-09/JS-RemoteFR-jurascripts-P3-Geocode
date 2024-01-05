@@ -13,7 +13,7 @@ function Nav() {
     <nav className={`navbar ${showLinks ? "show_nav" : "hide_nav"}`}>
       <ul className="navbar_links">
         <li className="navbar_item slide_in_down_1">
-          <Link to="/" className="navbar_link link_accueil">
+          <Link to="/home/presentation" className="navbar_link link_accueil">
             Accueil
           </Link>
         </li>
