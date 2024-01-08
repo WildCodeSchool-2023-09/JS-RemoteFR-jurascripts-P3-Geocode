@@ -29,11 +29,11 @@ router.get("/station/:id", stationControllers.read);
 router.post("/station", stationControllers.add);
 
 // ***** PUT
-// router.put("/station/:id/name", stationControllers.updateName);
-// router.put("/station/:id/location", stationControllers.updateLocation);
-// router.put("/station/:id/acces", stationControllers.updateAcces);
-// router.put("/station/:id/hours", stationControllers.updateHours);
-// router.put("/station/:id/geopoint", stationControllers.updateGeoPoint);
+router.put("/station/name/:id", stationControllers.editName);
+router.put("/station/address/:id", stationControllers.editLocation);
+router.put("/station/acces/:id", stationControllers.editAcces);
+router.put("/station/hours/:id", stationControllers.editHours);
+router.put("/station/geopoint/:id", stationControllers.editGeo);
 
 /* ************************************************************************* */
 
