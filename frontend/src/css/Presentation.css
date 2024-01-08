@@ -24,3 +24,18 @@
   width: 60%;
   margin-top: 2%;
 }
+
+@media screen and (min-width: 650px) {
+  .presentation {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+
+  .tree_presentation {
+    max-width: 20%;
+  }
+
+  .car_presentation {
+    max-width: 20%;
+  }
+}
