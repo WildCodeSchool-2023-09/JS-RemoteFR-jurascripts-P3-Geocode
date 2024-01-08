@@ -70,7 +70,7 @@ const add = async (req, res, next) => {
   } = await req.body;
 
   try {
-    const insertId = await tables.station.create(
+    const insertId = await tables.station.createStation(
       nomStation,
       localisation,
       conditionAcces,
