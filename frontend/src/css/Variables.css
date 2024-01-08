@@ -6,6 +6,9 @@
     #7cd858 87.24%
   );
   --background-grey: rgba(82, 91, 90, 0.8);
+  --background-white: #e5e9e76d;
   --color-green: #21a89a;
   --color-white: #e5e9e7;
+  --color-deep-green: #198a7e;
+  --color-link: #7cd858;
 }

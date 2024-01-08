@@ -1,0 +1,41 @@
+@import "./Variables.css";
+
+.presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.p_presentation {
+  margin: 2%;
+  font-size: 0.7em;
+}
+
+.h2_presentation {
+  margin: 10% 0 2%;
+}
+
+.tree_presentation {
+  width: 40%;
+}
+
+.car_presentation {
+  width: 60%;
+  margin-top: 2%;
+}
+
+@media screen and (min-width: 650px) {
+  .presentation {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+
+  .tree_presentation {
+    max-width: 20%;
+  }
+
+  .car_presentation {
+    max-width: 20%;
+  }
+}

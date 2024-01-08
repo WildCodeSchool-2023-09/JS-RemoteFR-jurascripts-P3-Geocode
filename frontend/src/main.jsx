@@ -7,11 +7,17 @@ import App from "./App";
 import Presentation from "./pages/Presentation";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
+import Card from "./pages/Card";
+import Connect from "./pages/Connect";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/*",
+    element: <Error />,
   },
   {
     path: "/home",
@@ -22,8 +28,12 @@ const router = createBrowserRouter([
         element: <Presentation />,
       },
       {
-        path: "/home/*",
-        element: <Error />,
+        path: "/home/card",
+        element: <Card />,
+      },
+      {
+        path: "/home/connect",
+        element: <Connect />,
       },
     ],
   },
