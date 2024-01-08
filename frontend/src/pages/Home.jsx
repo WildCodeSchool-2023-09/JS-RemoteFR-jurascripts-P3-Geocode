@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "../css/Home.css";
 import logo from "../assets/logo.png";
 import born from "../assets/born.png";
@@ -9,7 +9,9 @@ function Home() {
     <div className="container">
       <header className="head">
         <img className="logo_home" src={logo} alt="logo de GeoCode" />
-        <img className="user_home" src={born} alt="logo de l'utilisateur" />
+        <Link className="user_home" to="/home/connect">
+          <img className="user_home" src={born} alt="logo de l'utilisateur" />
+        </Link>
         <Nav />
       </header>
       <main>
