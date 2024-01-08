@@ -18,7 +18,7 @@ function Nav() {
           </Link>
         </li>
         <li className="navbar_item slide_in_down_2">
-          <Link to="/" className="navbar_link link_profil">
+          <Link to="/home/connect" className="navbar_link link_profil">
             Profil
           </Link>
         </li>
