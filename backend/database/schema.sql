@@ -18,20 +18,20 @@ CREATE TABLE `station` (
   `condition_acces` varchar(50),
   `horaires` varchar(255),
   `longitude` varchar(50),
-  `latitude` varchar(50)
+  `latitude` varchar(50),
+  `terminal_id` int 
+  FOREIGN KEY (`terminal_id`) 
+  REFERENCES `terminal` (`id`),
 );
 
 /* ******************************* Terminal ****************************** */
 
 CREATE TABLE `terminal` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `station_id` int ,
   `nom_operateur` VARCHAR(255),
   `puissance_nominale` int,
   `plug_id` int,
   `status` boolean DEFAULT true,
-  FOREIGN KEY (`station_id`) 
-  REFERENCES `station` (`id`),
   FOREIGN KEY (`plug_id`) 
   REFERENCES `plug` (`id`)
 );
