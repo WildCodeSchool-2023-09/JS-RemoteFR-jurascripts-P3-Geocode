@@ -88,7 +88,7 @@ const add = async (req, res, next) => {
 
 const editNickname = async (req, res, next) => {
   try {
-    const nickname = await req.body;
+    const { nickname } = await req.body;
     const id = await req.params.id;
 
     const updateNickname = await tables.user.update(nickname, id);
@@ -124,6 +124,40 @@ const editName = async (req, res, next) => {
   }
 };
 
+const editEmail = async (req, res, next) => {
+  try {
+    const { email } = await req.body;
+    const id = await req.params.id;
+
+    const updateEmail = await tables.user.updateEmail(email, id);
+
+    if (updateEmail.affectedRows === 0) {
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(204);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const editCity = async (req, res, next) => {
+  try {
+    const { city } = await req.body;
+    const id = await req.params.id;
+
+    const updateCity = await tables.user.updateCity(city, id);
+
+    if (updateCity.affectedRows === 0) {
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(204);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   browse,
   read,
@@ -133,4 +167,6 @@ module.exports = {
   add,
   editNickname,
   editName,
+  editEmail,
+  editCity,
 };

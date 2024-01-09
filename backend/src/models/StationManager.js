@@ -64,8 +64,7 @@ SELECT * FROM ${this.table} WHERE longitude = ? AND latitude = ? `,
 
   async updateName(nameStation, id) {
     const [result] = await this.database.query(
-      `
-  UPDATE ${this.table} SET nom_station = ? WHERE id = ?`,
+      `UPDATE ${this.table} SET nom_station = ? WHERE id = ?`,
       [nameStation, id]
     );
     return result;
