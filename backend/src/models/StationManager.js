@@ -53,10 +53,8 @@ SELECT * FROM ${this.table} WHERE longitude = ? AND latitude = ? `,
     latitude
   ) {
     const [result] = await this.database.query(
-      `
-    INSERT INTO ${this.table} (nom_station, localisation, condition_acces, horaires, longitude, latitude)
-    VALUES (?, ?, ?, ?, ?, ?)
-    `,
+      `INSERT INTO ${this.table} (nom_station, localisation, condition_acces, horaires, longitude, latitude)
+    VALUES (?, ?, ?, ?, ?, ?)`,
       [nomStation, localisation, conditionAcces, horaires, longitude, latitude]
     );
     return result.insertId;

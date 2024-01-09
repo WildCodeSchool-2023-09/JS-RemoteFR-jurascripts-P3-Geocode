@@ -9,9 +9,9 @@ class UserManager extends AbstractManager {
 
   async create(nickname, email, password, registerDate) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (nickname, email, password, register_date) VALUES (?,?,?,?)`[
-        (nickname, email, password, registerDate)
-      ]
+      `INSERT INTO ${this.table} (nickname, email, password, register_date)
+       VALUES (?, ?, ?, ?)`,
+      [nickname, email, password, registerDate]
     );
     return result.insertId;
   }
@@ -43,7 +43,7 @@ class UserManager extends AbstractManager {
 
   async readDate(registerDate) {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE register_date LIKE ?`,
+      `SELECT id, nickname, email, register_date, is_admin FROM ${this.table} WHERE register_date LIKE ?`,
       [`%${registerDate}%`]
     );
     return rows;
@@ -51,7 +51,7 @@ class UserManager extends AbstractManager {
 
   async readAllUsers() {
     const [rows] = await this.database.query(`SELECT id FROM ${this.table}`);
-    return rows[-1];
+    return rows[rows.length - 1];
   }
 
   async readEmail(email) {

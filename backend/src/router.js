@@ -11,10 +11,20 @@ const authControllers = require("./controllers/authControllers");
 /* ******************************* User ****************************** */
 // ***** GET
 router.get("/user", userControllers.browse);
+router.get("/user/all", userControllers.readAllUsers);
+router.get("/user/nickname", userControllers.readUser);
+router.get("/user/register", userControllers.readDate);
 router.get("/user/:id", userControllers.read);
 
 // ***** POST
 router.post("/user", hashPassword, userControllers.add);
+
+// ***** PUT
+router.put("/station/nickname/:id", userControllers.editNickname);
+router.put("/station/name/:id", userControllers.editName);
+// router.put("/station/email/:id", userControllers.editEmail);
+// router.put("/station/password/:id", userControllers.editPwd);
+// router.put("/station/city/:id", userControllers.editCity);
 
 /* ******************************* AUTH ****************************** */
 
