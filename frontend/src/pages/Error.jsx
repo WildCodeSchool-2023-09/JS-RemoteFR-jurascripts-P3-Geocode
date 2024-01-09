@@ -8,7 +8,7 @@ function Error() {
       <h2 className="h2_error">Erreur 404</h2>
       <p className="p_error">Panne de batterie veuillez recharger!</p>
       <Link className="btn_error" to="/home/presentation">
-        Acceuil
+        Accueil
       </Link>
       <img className="img_error" src={car} alt="Voiture électrique" />
     </section>
