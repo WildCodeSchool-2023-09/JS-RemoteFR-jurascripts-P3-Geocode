@@ -9,7 +9,7 @@ function Home() {
     <div className="container">
       <header className="head">
         <img className="logo_home" src={logo} alt="logo de GeoCode" />
-        <Link className="user_home" to="/home/connect">
+        <Link className="user_home" to="/page/connexion">
           <img className="user_home" src={born} alt="logo de l'utilisateur" />
         </Link>
         <Nav />
