@@ -3,20 +3,22 @@ const express = require("express");
 const router = express.Router();
 
 /* ******************************* Controllers ****************************** */
-
-const itemControllers = require("./controllers/itemControllers");
+const { hashPassword } = require("./services/auth");
+const userControllers = require("./controllers/userControllers");
 const stationControllers = require("./controllers/stationControllers");
+const authControllers = require("./controllers/authControllers");
 
-/* ******************************* Item ****************************** */
+/* ******************************* User ****************************** */
+// ***** GET
+router.get("/user", userControllers.browse);
+router.get("/user/:id", userControllers.read);
 
-// Route to get a list of items
-router.get("/items", itemControllers.browse);
+// ***** POST
+router.post("/user", hashPassword, userControllers.add);
 
-// Route to get a specific item by ID
-router.get("/items/:id", itemControllers.read);
+/* ******************************* AUTH ****************************** */
 
-// Route to add a new item
-router.post("/items", itemControllers.add);
+router.post("/login", authControllers.login);
 
 /* ******************************* Station ****************************** */
 // ***** GET

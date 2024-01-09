@@ -19,13 +19,15 @@ class UserManager extends AbstractManager {
   /* ******************************* Read ****************************** */
 
   async readAll() {
-    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
+    const [rows] = await this.database.query(
+      `SELECT id, nickname, email, register_date, is_admin FROM ${this.table}`
+    );
     return rows;
   }
 
   async read(id) {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE id = ?`,
+      `SELECT id, nickname, email, register_date, is_admin FROM ${this.table} WHERE id = ?`,
       [id]
     );
     return rows[0];
@@ -33,7 +35,7 @@ class UserManager extends AbstractManager {
 
   async readUser(nickname) {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE nickname LIKE ?`,
+      `SELECT id, nickname, email, register_date, is_admin FROM ${this.table} WHERE nickname LIKE ?`,
       [`%${nickname}%`]
     );
     return rows;
@@ -50,6 +52,14 @@ class UserManager extends AbstractManager {
   async readAllUsers() {
     const [rows] = await this.database.query(`SELECT id FROM ${this.table}`);
     return rows[-1];
+  }
+
+  async readEmail(email) {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE email = ?`,
+      [email]
+    );
+    return rows[0];
   }
 
   /* ******************************* Update ****************************** */
