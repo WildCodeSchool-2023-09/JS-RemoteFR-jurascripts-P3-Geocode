@@ -29,7 +29,7 @@ function Nav() {
         </li>
         <li className="navbar_item slide_in_down_4">
           <Link to="/" className="navbar_link link_information">
-            Information
+            Informations
           </Link>
         </li>
       </ul>
