@@ -4,9 +4,11 @@
 
 // Import the manager modules responsible for handling data operations on the tables
 const UserManager = require("./models/UserManager");
+const StationManager = require("./models/StationManager");
 
 const managers = [
   UserManager,
+  StationManager,
   // Add other managers here
 ];
 

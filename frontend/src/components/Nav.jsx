@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../css/Nav.css";
 import { useState } from "react";
 
@@ -12,24 +13,27 @@ function Nav() {
     <nav className={`navbar ${showLinks ? "show_nav" : "hide_nav"}`}>
       <ul className="navbar_links">
         <li className="navbar_item slide_in_down_1">
-          <a href="/" className="navbar_link link_accueil">
+          <Link to="/page/presentation" className="navbar_link link_accueil">
             Accueil
-          </a>
+          </Link>
         </li>
         <li className="navbar_item slide_in_down_2">
-          <a href="/" className="navbar_link link_profil">
+          <Link to="/page/connexion" className="navbar_link link_profil">
             Profil
-          </a>
+          </Link>
         </li>
         <li className="navbar_item slide_in_down_3">
-          <a href="/home/card" className="navbar_link link_carte">
+          <Link to="/page/carte" className="navbar_link link_carte">
             Carte
-          </a>
+          </Link>
         </li>
         <li className="navbar_item slide_in_down_4">
-          <a href="/" className="navbar_link link_information">
-            Information
-          </a>
+          <Link
+            to="/page/informations"
+            className="navbar_link link_information"
+          >
+            Informations
+          </Link>
         </li>
       </ul>
       <button
