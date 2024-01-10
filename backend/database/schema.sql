@@ -9,18 +9,6 @@ CREATE TABLE `plug` (
   `prise_type_autre` boolean
 );
 
-/* ******************************* Terminal ****************************** */
-
-CREATE TABLE `terminal` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `nom_operateur` VARCHAR(255),
-  `puissance_nominale` int,
-  `plug_id` int,
-  `status` boolean DEFAULT true,
-  FOREIGN KEY (`plug_id`) 
-  REFERENCES `plug` (`id`)
-);
-
 /* ******************************* Station ****************************** */
 
 CREATE TABLE `station` (
@@ -30,8 +18,21 @@ CREATE TABLE `station` (
   `condition_acces` varchar(50),
   `horaires` varchar(255),
   `longitude` varchar(50),
-  `latitude` varchar(50),
-  `terminal_id` int,
+  `latitude` varchar(50)
+ 
+);
+
+/* ******************************* Terminal ****************************** */
+
+CREATE TABLE `terminal` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `nom_operateur` VARCHAR(255),
+  `puissance_nominale` int,
+  `plug_id` int,
+   `terminal_id` int,
+  `status` boolean DEFAULT true,
+  FOREIGN KEY (`plug_id`) 
+  REFERENCES `plug` (`id`),
   FOREIGN KEY (`terminal_id`) 
   REFERENCES `terminal` (`id`)
 );
