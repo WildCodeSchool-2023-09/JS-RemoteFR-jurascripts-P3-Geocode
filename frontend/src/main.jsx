@@ -9,7 +9,7 @@ import Error from "./pages/Error";
 import Home from "./pages/Home";
 import Card from "./pages/Card";
 import Connect from "./pages/Connect";
-import Information from "./pages/Information";
+import Informations from "./pages/Informations";
 
 const router = createBrowserRouter([
   {
@@ -37,8 +37,8 @@ const router = createBrowserRouter([
         element: <Connect />,
       },
       {
-        path: "/home/information",
-        element: <Information />,
+        path: "/page/informations",
+        element: <Informations />,
       },
     ],
   },
