@@ -13,22 +13,38 @@ function Nav() {
     <nav className={`navbar ${showLinks ? "show_nav" : "hide_nav"}`}>
       <ul className="navbar_links">
         <li className="navbar_item slide_in_down_1">
-          <Link to="/home/presentation" className="navbar_link link_accueil">
+          <Link
+            to="/home/presentation"
+            className="navbar_link link_accueil"
+            onClick={handleShowLinks}
+          >
             Accueil
           </Link>
         </li>
         <li className="navbar_item slide_in_down_2">
-          <Link to="/" className="navbar_link link_profil">
+          <Link
+            to="/"
+            className="navbar_link link_profil"
+            onClick={handleShowLinks}
+          >
             Profil
           </Link>
         </li>
         <li className="navbar_item slide_in_down_3">
-          <Link to="/home/card" className="navbar_link link_carte">
+          <Link
+            to="/home/card"
+            className="navbar_link link_carte"
+            onClick={handleShowLinks}
+          >
             Carte
           </Link>
         </li>
         <li className="navbar_item slide_in_down_4">
-          <Link to="/" className="navbar_link link_information">
+          <Link
+            to="/"
+            className="navbar_link link_information"
+            onClick={handleShowLinks}
+          >
             Information
           </Link>
         </li>
