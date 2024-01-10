@@ -9,6 +9,7 @@ import Error from "./pages/Error";
 import Home from "./pages/Home";
 import Card from "./pages/Card";
 import Connect from "./pages/Connect";
+import Informations from "./pages/Informations";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/page/connexion",
         element: <Connect />,
+      },
+      {
+        path: "/page/informations",
+        element: <Informations />,
       },
     ],
   },
