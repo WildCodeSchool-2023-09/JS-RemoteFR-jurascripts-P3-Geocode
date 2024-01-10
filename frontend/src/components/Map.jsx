@@ -6,7 +6,7 @@ import "../css/Map.css";
 export default function Map() {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const city = { lng: -1.4833, lat: 43.4833 };
+  const city = { lng: 2.333333, lat: 48.866667 };
   const [zoom] = useState(11);
   maptilersdk.config.apiKey = "hJl8991OQz7TVl2QGIsC";
 
@@ -17,7 +17,7 @@ export default function Map() {
       container: mapContainer.current,
       style: maptilersdk.MapStyle.STREETS,
       center: [city.lng, city.lat],
-      zoom: 11,
+      zoom: 5,
     });
   }, [city.lng, city.lat, zoom]);
 
