@@ -36,7 +36,7 @@ SELECT * FROM ${this.table} WHERE id = ?`,
   async readGeoPoint(longitude, latitude) {
     const [rows] = await this.database.query(
       `
-SELECT * FROM ${this.table} WHERE longitude = ?, latitude = ?`,
+SELECT * FROM ${this.table} WHERE longitude = ? AND latitude = ? `,
       [longitude, latitude]
     );
     return rows;
@@ -53,10 +53,8 @@ SELECT * FROM ${this.table} WHERE longitude = ?, latitude = ?`,
     latitude
   ) {
     const [result] = await this.database.query(
-      `
-    INSERT INTO ${this.table} (nom_station,localisation,condition_acces,horaires,longitude)
-        VALUE (?,?,?,?,?,?)
-    `,
+      `INSERT INTO ${this.table} (nom_station, localisation, condition_acces, horaires, longitude, latitude)
+    VALUES (?, ?, ?, ?, ?, ?)`,
       [nomStation, localisation, conditionAcces, horaires, longitude, latitude]
     );
     return result.insertId;
@@ -64,20 +62,19 @@ SELECT * FROM ${this.table} WHERE longitude = ?, latitude = ?`,
 
   /* ******************************* Update ****************************** */
 
-  async updateName(nomStation, id) {
+  async updateName(nameStation, id) {
     const [result] = await this.database.query(
-      `
-  UPDATE ${this.table} SET nom_station = ? WHERE id = ?`,
-      [nomStation, id]
+      `UPDATE ${this.table} SET nom_station = ? WHERE id = ?`,
+      [nameStation, id]
     );
     return result;
   }
 
-  async updateLocation(localisation, id) {
+  async updateLocation(location, id) {
     const [result] = await this.database.query(
       `
   UPDATE ${this.table} SET localisation = ? WHERE id = ?`,
-      [localisation, id]
+      [location, id]
     );
     return result;
   }
@@ -91,11 +88,11 @@ SELECT * FROM ${this.table} WHERE longitude = ?, latitude = ?`,
     return result;
   }
 
-  async updateHours(horaires, id) {
+  async updateHours(hours, id) {
     const [result] = await this.database.query(
       `
   UPDATE ${this.table} SET horaires = ? WHERE id = ?`,
-      [horaires, id]
+      [hours, id]
     );
     return result;
   }
