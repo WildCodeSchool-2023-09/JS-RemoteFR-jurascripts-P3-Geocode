@@ -19,6 +19,7 @@ CREATE TABLE `station` (
   `horaires` varchar(255),
   `longitude` varchar(50),
   `latitude` varchar(50)
+  `id_station_itinerance`varchar(150)
  
 );
 
