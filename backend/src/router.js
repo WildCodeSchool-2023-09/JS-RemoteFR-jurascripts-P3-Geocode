@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 /* ******************************* Controllers ****************************** */
-const { hashPassword } = require("./services/auth");
+const { hashPassword, verifyToken } = require("./services/auth");
 const userControllers = require("./controllers/userControllers");
 const stationControllers = require("./controllers/stationControllers");
 const authControllers = require("./controllers/authControllers");
@@ -47,5 +47,7 @@ router.put("/station/hours/:id", stationControllers.editHours);
 router.put("/station/geopoint/:id", stationControllers.editGeo);
 
 /* ************************************************************************* */
+
+router.use(verifyToken);
 
 module.exports = router;
