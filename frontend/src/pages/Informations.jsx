@@ -109,25 +109,21 @@ function Informations() {
             src={plugtable}
             alt="tableau des prises"
           />
-          <p>
-            Commençons par définir les termes. Une borne est un dispositif relié
-            au réseau d&apos;électricité ; autrement dit, une prise améliorée
-            qui dispose d&apos;un câble et d&apos;un connecteur permettant de
-            recharger la batterie d&apos;un véhicule électrique.
-            <br />
-            L&apos;installation de ces bornes peut se faire aussi bien sur la
-            voie publique que sur des aires d&apos;autoroute ou encore à
-            l&apos;intérieur de parkings de ville, dans les gares ou les
-            aéroports.
-            <br />
-            Ces bornes ne sont cependant pas toutes équivalentes. Elles se
-            différencient surtout par la puissance qu&apos;elles sont
-            susceptibles de délivrer. On peut ainsi distinguer :
-            <br />
+          <div>
             <p>
-              <span className="bold_informations">Les bornes normales :</span>
-              bornes de recharge délivrant une puissance comprise entre 3 et 6
-              kW.
+              Commençons par définir les termes. Une borne est un dispositif
+              relié au réseau d&apos;électricité ; autrement dit, une prise
+              améliorée qui dispose d&apos;un câble et d&apos;un connecteur
+              permettant de recharger la batterie d&apos;un véhicule électrique.
+              <br />
+              L&apos;installation de ces bornes peut se faire aussi bien sur la
+              voie publique que sur des aires d&apos;autoroute ou encore à
+              l&apos;intérieur de parkings de ville, dans les gares ou les
+              aéroports.
+              <br />
+              Ces bornes ne sont cependant pas toutes équivalentes. Elles se
+              différencient surtout par la puissance qu&apos;elles sont
+              susceptibles de délivrer. On peut ainsi distinguer :
             </p>
             <p>
               <span className="bold_informations">Les bornes normales :</span>
@@ -151,7 +147,7 @@ function Informations() {
               puissance délivrée supérieure à 100 kW. Certaines bornes sont
               capables de délivrer jusqu&apos;à 350 kW.
             </p>
-          </p>
+          </div>
         </div>
         <p>
           À titre d&apos;illustration, si vous branchez la prise de votre
