@@ -76,6 +76,7 @@ a {
 @media screen and (max-width: 767px) {
   .navbar {
     background: transparent;
+    position: absolute;
   }
 
   ::after {
@@ -160,9 +161,9 @@ a {
   .navbar_burger {
     border: none;
     display: block;
-    position: fixed;
+    position: absolute;
     top: 9rem;
-    right: 1rem;
+    right: 3rem;
   }
 
   .navbar_burger:hover {
