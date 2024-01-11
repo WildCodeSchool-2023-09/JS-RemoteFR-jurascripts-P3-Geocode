@@ -9,18 +9,6 @@ CREATE TABLE `plug` (
   `prise_type_autre` boolean
 );
 
-/* ******************************* Terminal ****************************** */
-
-CREATE TABLE `terminal` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `nom_operateur` VARCHAR(255),
-  `puissance_nominale` int,
-  `plug_id` int,
-  `status` boolean DEFAULT true,
-  FOREIGN KEY (`plug_id`) 
-  REFERENCES `plug` (`id`)
-);
-
 /* ******************************* Station ****************************** */
 
 CREATE TABLE `station` (
@@ -29,11 +17,25 @@ CREATE TABLE `station` (
   `localisation` varchar(150),
   `condition_acces` varchar(50),
   `horaires` varchar(255),
-  `longitude` varchar(50),
+  `id_station_itinerance`varchar(150)
+ 
+);
+
+/* ******************************* Terminal ****************************** */
+
+CREATE TABLE `terminal` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `nom_operateur` VARCHAR(255),
+  `puissance_nominale` int,
+  `plug_id` int,
+  `station_id` int,
+  `status` boolean DEFAULT true,
+  `longitude` varchar(255),
   `latitude` varchar(50),
-  `terminal_id` int,
-  FOREIGN KEY (`terminal_id`) 
-  REFERENCES `terminal` (`id`)
+  FOREIGN KEY (`plug_id`) 
+  REFERENCES `plug` (`id`),
+  FOREIGN KEY (`station_id`) 
+  REFERENCES `station` (`id`)
 );
 
 /* ******************************* Reservation ****************************** */
