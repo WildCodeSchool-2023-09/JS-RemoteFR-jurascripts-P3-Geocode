@@ -124,12 +124,7 @@ function Informations() {
             différencient surtout par la puissance qu&apos;elles sont
             susceptibles de délivrer. On peut ainsi distinguer :
             <br />
-            <p>
-              <span className="bold_informations">Les bornes normales :</span>
-              bornes de recharge délivrant une puissance comprise entre 3 et 6
-              kW.
-            </p>
-            <p>
+                        <p>
               <span className="bold_informations">Les bornes normales :</span>
               bornes de recharge délivrant une puissance comprise entre 3 et 6
               kW.
