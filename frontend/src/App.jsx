@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <img className="logo_app" src={logo} alt="logo de GéoCode" />
-      <Link className="btn_app" to="/home/presentation">
+      <Link className="btn_app" to="/page/presentation">
         En Route
       </Link>
       <img

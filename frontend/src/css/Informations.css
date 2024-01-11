@@ -1,0 +1,66 @@
+@import "./Variables.css";
+
+.space_informations {
+  padding: 10px;
+}
+
+.informations_page {
+  max-width: 87%;
+  margin: 0 auto 10px;
+  padding: 15px;
+  box-shadow: 0 0 20px 3px black;
+  border-radius: 15px;
+}
+
+.center_title {
+  text-align: center;
+}
+
+.title_informations {
+  font-size: 2rem;
+}
+
+.small_title_informations {
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+
+.bold_informations {
+  font-weight: bold;
+}
+
+.underline_informations {
+  text-decoration: underline;
+}
+
+.terminal_informations {
+  float: inline-end;
+  width: 20%;
+  height: auto;
+  margin: 0 0 10px 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.separation_of_elements span,
+.separation_of_elements p {
+  display: block;
+}
+
+.subtitle_informations {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.plugtable_informations {
+  float: inline-start;
+  width: 45%;
+  height: 4uto;
+  margin: 0 10px 10px 0;
+}
+
+.align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -17,23 +17,25 @@ CREATE TABLE `station` (
   `localisation` varchar(150),
   `condition_acces` varchar(50),
   `horaires` varchar(255),
-  `longitude` varchar(50),
-  `latitude` varchar(50)
+  `id_station_itinerance`varchar(150)
+ 
 );
 
 /* ******************************* Terminal ****************************** */
 
 CREATE TABLE `terminal` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `station_id` int ,
   `nom_operateur` VARCHAR(255),
   `puissance_nominale` int,
   `plug_id` int,
+  `station_id` int,
   `status` boolean DEFAULT true,
-  FOREIGN KEY (`station_id`) 
-  REFERENCES `station` (`id`),
+  `longitude` varchar(255),
+  `latitude` varchar(50),
   FOREIGN KEY (`plug_id`) 
-  REFERENCES `plug` (`id`)
+  REFERENCES `plug` (`id`),
+  FOREIGN KEY (`station_id`) 
+  REFERENCES `station` (`id`)
 );
 
 /* ******************************* Reservation ****************************** */

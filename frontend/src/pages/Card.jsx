@@ -16,9 +16,6 @@ function Card() {
         <button type="button" className="vehicule_card btn_card">
           Véhicule
         </button>
-        <button type="button" className="position_card btn_card">
-          Votre position
-        </button>
       </section>
       <Map />
     </div>
