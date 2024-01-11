@@ -129,21 +129,30 @@ const csv = async () => {
         prise_type_combo_ccs: rowData.prise_type_combo_ccs,
         prise_type_chademo: rowData.prise_type_chademo,
         prise_type_autre: rowData.prise_type_autre,
+        longitude: rowData.longitude,
+        latitude: rowData.latitude,
       };
     });
 
     /* ******************************* StationData ****************************** */
 
-    const stationData = dataBorn.map((rowData) => {
+    const stationDataJson = dataBorn.map((rowData) => {
       return {
         nom_station: rowData.nom_station,
         localisation: rowData.adresse_station,
         condition_acces: rowData.condition_acces,
         horaires: rowData.horaires,
-        longitude: rowData.consolidated_longitude,
-        latitude: rowData.consolidated_latitude,
+        idStationItinerance: rowData.id_station_itinerance,
       };
     });
+
+    const stationData = Array.from(
+      new Set(stationDataJson.map((value) => value.idStationItinerance))
+    ).map((idStationItinerance) =>
+      stationDataJson.find(
+        (value) => value.idStationItinerance === idStationItinerance
+      )
+    );
 
     /* ******************************* Truncates ****************************** */
 
@@ -162,14 +171,12 @@ const csv = async () => {
 
     const stationPromises = stationData.map((data) => {
       return database.query(
-        "INSERT INTO station (nom_station, localisation, condition_acces, horaires, longitude, latitude) VALUES (?, ?, ?, ?, ?, ?)",
+        "INSERT INTO station (nom_station, localisation, condition_acces, horaires) VALUES (?, ?, ?, ?)",
         [
           data.nom_station,
           data.localisation,
           data.condition_acces,
           data.horaires,
-          data.longitude,
-          data.latitude,
         ]
       );
     });
@@ -200,8 +207,14 @@ const csv = async () => {
 
     const terminalPromises = terminalData.map((data) => {
       return database.query(
-        "INSERT INTO terminal (nom_operateur, puissance_nominale, plug_id) VALUES (?, ?, ?)",
-        [data.nom_operateur, data.puissance_nominale, conditionPlug(data)]
+        "INSERT INTO terminal (nom_operateur, puissance_nominale, plug_id,longitude,latitude) VALUES (?, ?, ?, ?, ?)",
+        [
+          data.nom_operateur,
+          data.puissance_nominale,
+          conditionPlug(data),
+          data.longitude,
+          data.latitude,
+        ]
       );
     });
     await Promise.all(terminalPromises);
