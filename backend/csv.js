@@ -129,8 +129,8 @@ const csv = async () => {
         prise_type_combo_ccs: rowData.prise_type_combo_ccs,
         prise_type_chademo: rowData.prise_type_chademo,
         prise_type_autre: rowData.prise_type_autre,
-        longitude: rowData.longitude,
-        latitude: rowData.latitude,
+        longitude: rowData.consolidated_longitude,
+        latitude: rowData.consolidated_latitude,
       };
     });
 
@@ -171,12 +171,13 @@ const csv = async () => {
 
     const stationPromises = stationData.map((data) => {
       return database.query(
-        "INSERT INTO station (nom_station, localisation, condition_acces, horaires) VALUES (?, ?, ?, ?)",
+        "INSERT INTO station (nom_station, localisation, condition_acces, horaires, id_station_itinerance) VALUES (?, ?, ?, ?, ?)",
         [
           data.nom_station,
           data.localisation,
           data.condition_acces,
           data.horaires,
+          data.idStationItinerance,
         ]
       );
     });
@@ -207,13 +208,13 @@ const csv = async () => {
 
     const terminalPromises = terminalData.map((data) => {
       return database.query(
-        "INSERT INTO terminal (nom_operateur, puissance_nominale, plug_id,longitude,latitude) VALUES (?, ?, ?, ?, ?)",
+        "INSERT INTO terminal (nom_operateur, puissance_nominale, longitude, latitude, plug_id) VALUES (?, ?, ?, ?, ?)",
         [
           data.nom_operateur,
           data.puissance_nominale,
-          conditionPlug(data),
           data.longitude,
           data.latitude,
+          conditionPlug(data),
         ]
       );
     });

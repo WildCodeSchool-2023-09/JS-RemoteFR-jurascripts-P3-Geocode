@@ -33,11 +33,10 @@ SELECT * FROM ${this.table} WHERE id = ?`,
     return rows;
   }
 
-  async readGeoPoint(longitude, latitude) {
+  async readStationItinerance(idStationItinerance) {
     const [rows] = await this.database.query(
-      `
-SELECT * FROM ${this.table} WHERE longitude = ? AND latitude = ? `,
-      [longitude, latitude]
+      `SELECT * FROM ${this.table} WHERE id_station_itinerance = ? `,
+      [idStationItinerance]
     );
     return rows;
   }
@@ -49,13 +48,12 @@ SELECT * FROM ${this.table} WHERE longitude = ? AND latitude = ? `,
     localisation,
     conditionAcces,
     horaires,
-    longitude,
-    latitude
+    idStationItinerance
   ) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (nom_station, localisation, condition_acces, horaires, longitude, latitude)
-    VALUES (?, ?, ?, ?, ?, ?)`,
-      [nomStation, localisation, conditionAcces, horaires, longitude, latitude]
+      `INSERT INTO ${this.table} (nom_station, localisation, condition_acces, horaires, id_station_itinerance)
+    VALUES (?, ?, ?, ?)`,
+      [nomStation, localisation, conditionAcces, horaires, idStationItinerance]
     );
     return result.insertId;
   }
@@ -97,11 +95,11 @@ SELECT * FROM ${this.table} WHERE longitude = ? AND latitude = ? `,
     return result;
   }
 
-  async updateGeoPoint(longitude, latitude, id) {
+  async updateStationItinerance(idStationItinerance, id) {
     const [result] = await this.database.query(
       `
-  UPDATE ${this.table} SET longitude = ?, latitude = ? WHERE id = ?`,
-      [longitude, latitude, id]
+  UPDATE ${this.table} SET id_station_itinerance = ? WHERE id = ?`,
+      [idStationItinerance, id]
     );
     return result;
   }
