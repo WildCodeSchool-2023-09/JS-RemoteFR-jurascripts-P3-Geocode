@@ -33,29 +33,13 @@ SELECT * FROM ${this.table} WHERE id = ?`,
     return rows;
   }
 
-  async readGeoPoint(longitude, latitude) {
-    const [rows] = await this.database.query(
-      `
-SELECT * FROM ${this.table} WHERE longitude = ? AND latitude = ? `,
-      [longitude, latitude]
-    );
-    return rows;
-  }
-
   /* ******************************* Create ****************************** */
 
-  async createStation(
-    nomStation,
-    localisation,
-    conditionAcces,
-    horaires,
-    longitude,
-    latitude
-  ) {
+  async createStation(nomStation, localisation, conditionAcces, horaires) {
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (nom_station, localisation, condition_acces, horaires, longitude, latitude)
-    VALUES (?, ?, ?, ?, ?, ?)`,
-      [nomStation, localisation, conditionAcces, horaires, longitude, latitude]
+    VALUES (?, ?, ?, ?)`,
+      [nomStation, localisation, conditionAcces, horaires]
     );
     return result.insertId;
   }
@@ -93,15 +77,6 @@ SELECT * FROM ${this.table} WHERE longitude = ? AND latitude = ? `,
       `
   UPDATE ${this.table} SET horaires = ? WHERE id = ?`,
       [hours, id]
-    );
-    return result;
-  }
-
-  async updateGeoPoint(longitude, latitude, id) {
-    const [result] = await this.database.query(
-      `
-  UPDATE ${this.table} SET longitude = ?, latitude = ? WHERE id = ?`,
-      [longitude, latitude, id]
     );
     return result;
   }

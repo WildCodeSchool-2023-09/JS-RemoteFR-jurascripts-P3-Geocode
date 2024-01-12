@@ -33,7 +33,6 @@ router.post("/login", authControllers.login);
 // ***** GET
 router.get("/station", stationControllers.browse);
 router.get("/station/address", stationControllers.readLocation);
-router.get("/station/geopoint", stationControllers.readGeo);
 router.get("/station/:id", stationControllers.read);
 
 // ***** POST
@@ -44,7 +43,6 @@ router.put("/station/name/:id", stationControllers.editName);
 router.put("/station/address/:id", stationControllers.editLocation);
 router.put("/station/acces/:id", stationControllers.editAcces);
 router.put("/station/hours/:id", stationControllers.editHours);
-router.put("/station/geopoint/:id", stationControllers.editGeo);
 
 /* ************************************************************************* */
 

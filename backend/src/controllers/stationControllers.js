@@ -41,42 +41,17 @@ const readLocation = async (req, res, next) => {
   }
 };
 
-const readGeo = async (req, res, next) => {
-  try {
-    const { x, y } = await req.query;
-
-    const station = await tables.station.readGeoPoint(x, y);
-
-    if (station == null) {
-      res.sendStatus(404);
-    } else {
-      res.status(200).json(station);
-    }
-  } catch (err) {
-    next(err);
-  }
-};
-
 /* ******************************* POST ****************************** */
 
 const add = async (req, res, next) => {
-  const {
-    nomStation,
-    localisation,
-    conditionAcces,
-    horaires,
-    longitude,
-    latitude,
-  } = await req.body;
+  const { nomStation, localisation, conditionAcces, horaires } = await req.body;
 
   try {
     const insertId = await tables.station.createStation(
       nomStation,
       localisation,
       conditionAcces,
-      horaires,
-      longitude,
-      latitude
+      horaires
     );
 
     res.status(201).json(insertId);
@@ -153,33 +128,14 @@ const editHours = async (req, res, next) => {
     next(err);
   }
 };
-const editGeo = async (req, res, next) => {
-  try {
-    const x = await req.body;
-    const y = await req.body;
-    const id = await req.params.id;
-
-    const updateGeoPoint = await tables.station.updateGeoPoint(x, y, id);
-
-    if (updateGeoPoint.affectedRows === 0) {
-      res.sendStatus(404);
-    } else {
-      res.sendStatus(204);
-    }
-  } catch (err) {
-    next(err);
-  }
-};
 
 module.exports = {
   browse,
   read,
   readLocation,
-  readGeo,
   add,
   editName,
   editLocation,
   editAcces,
   editHours,
-  editGeo,
 };
