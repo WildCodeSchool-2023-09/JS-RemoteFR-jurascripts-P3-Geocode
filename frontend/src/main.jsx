@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Card from "./pages/Card";
 import Connect from "./pages/Connect";
 import Informations from "./pages/Informations";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/page/informations",
         element: <Informations />,
+      },
+      {
+        path: "/page/inscription",
+        element: <Register />,
       },
     ],
   },

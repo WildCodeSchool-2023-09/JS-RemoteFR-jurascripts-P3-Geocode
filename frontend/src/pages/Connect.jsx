@@ -23,7 +23,7 @@ function Connect() {
         </p>
         <section className="pw_sign_connect">
           <p className="p_pw_connect">Mot de passe oublié ?</p>
-          <Link className="p_sign_connect" to="/">
+          <Link className="p_sign_connect" to="/page/inscription">
             Vous inscrire ici
           </Link>
         </section>
