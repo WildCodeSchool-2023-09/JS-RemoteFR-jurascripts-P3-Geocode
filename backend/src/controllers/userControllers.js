@@ -67,7 +67,9 @@ const readDate = async (req, res, next) => {
 /* ******************************* POST ****************************** */
 
 const add = async (req, res, next) => {
-  const { nickname, email, password, registerDate } = await req.body;
+  const registerDate = new Date();
+
+  const { nickname, email, password } = await req.body;
 
   try {
     const insertId = await tables.user.create(
