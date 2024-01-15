@@ -24,7 +24,7 @@ function Register() {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/app/user`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/user`,
         {
           method: "post",
           headers: { "Content-Type": "application/json" },
@@ -37,7 +37,7 @@ function Register() {
       );
 
       if (response.status === 201) {
-        navigate("page/connection");
+        navigate("page/connexion");
       } else {
         console.info(response);
       }
