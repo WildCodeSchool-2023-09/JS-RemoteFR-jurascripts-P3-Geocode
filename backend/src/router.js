@@ -7,6 +7,7 @@ const { hashPassword, verifyToken } = require("./services/auth");
 const userControllers = require("./controllers/userControllers");
 const stationControllers = require("./controllers/stationControllers");
 const authControllers = require("./controllers/authControllers");
+const messageControllers = require("./controllers/messageControllers");
 
 /* ******************************* User ****************************** */
 // ***** GET
@@ -45,6 +46,14 @@ router.put("/station/address/:id", stationControllers.editLocation);
 router.put("/station/acces/:id", stationControllers.editAcces);
 router.put("/station/hours/:id", stationControllers.editHours);
 router.put("/station/geopoint/:id", stationControllers.editGeo);
+
+/* ******************************* Message ****************************** */
+// ***** GET
+router.get("/message", messageControllers.browse);
+router.get("/message/:id", messageControllers.read);
+
+// ***** POST
+router.post("/message", messageControllers.add);
 
 /* ************************************************************************* */
 
