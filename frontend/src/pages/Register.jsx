@@ -37,7 +37,7 @@ function Register() {
       );
 
       if (response.status === 201) {
-        navigate("page/connexion");
+        navigate("/page/connexion");
       } else {
         console.info(response);
       }
