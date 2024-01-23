@@ -49,29 +49,29 @@ SELECT * FROM ${this.table} WHERE id = ?`,
     return rows;
   }
 
-  async readLongitude(longitude) {
+  async readGeo(longitude, latitude) {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE longitude = ? `,
-      [longitude]
+      `SELECT * FROM ${this.table} WHERE (longitude, latitude) VALUES (?, ?)`,
+      [longitude, latitude]
     );
     return rows;
   }
 
-  async readLatitude(latitude) {
-    const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE latitude = ? `,
-      [latitude]
-    );
-    return rows;
-  }
+  // async readLatitude(latitude) {
+  //   const [rows] = await this.database.query(
+  //     `SELECT * FROM ${this.table} WHERE latitude = ? `,
+  //     [latitude]
+  //   );
+  //   return rows;
+  // }
 
   /* ******************************* Create ****************************** */
 
-  async createStation(nomOperator, power, status, longitude, latitude) {
+  async createStation(nomOperator, power, longitude, latitude) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (nom_operateur, puissance_nominale, status, longitude, latitude)
-    VALUES (?, ?, ?, ?,?)`,
-      [nomOperator, power, status, longitude, latitude]
+      `INSERT INTO ${this.table} (nom_operateur, puissance_nominale, longitude, latitude)
+    VALUES (?, ?, ?,?)`,
+      [nomOperator, power, longitude, latitude]
     );
     return result.insertId;
   }

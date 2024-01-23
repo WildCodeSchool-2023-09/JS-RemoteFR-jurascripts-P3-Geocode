@@ -57,8 +57,9 @@ router.get("/terminal/operator", terminalControllers.readOperator);
 router.get("/terminal/power", terminalControllers.readPower);
 router.get("/terminal/status", terminalControllers.readStatus);
 router.get("/terminal/longitude", terminalControllers.readLongitude);
-router.get("/terminal/latitude", terminalControllers.readLatitude);
-router.get("/terminal/:id", terminalControllers.read);
+// router.get("/terminal/latitude", terminalControllers.readLatitude);
+// router.get("/terminal/:id", terminalControllers.read);
+router.get("/terminal/geo", terminalControllers.readGeo);
 
 // ***** POST
 router.post("/terminal", terminalControllers.add);

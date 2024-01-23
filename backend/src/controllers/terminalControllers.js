@@ -45,7 +45,7 @@ const readPower = async (req, res, next) => {
   try {
     const { power } = await req.query;
 
-    const terminal = await tables.terminal.readOperator(power);
+    const terminal = await tables.terminal.readPower(power);
 
     if (terminal == null) {
       res.sendStatus(404);
@@ -61,7 +61,7 @@ const readStatus = async (req, res, next) => {
   try {
     const { status } = await req.query;
 
-    const terminal = await tables.terminal.readOperator(status);
+    const terminal = await tables.terminal.readStatus(status);
 
     if (terminal == null) {
       res.sendStatus(404);
@@ -73,27 +73,11 @@ const readStatus = async (req, res, next) => {
   }
 };
 
-const readLongitude = async (req, res, next) => {
+const readGeo = async (req, res, next) => {
   try {
-    const { longitude } = await req.query;
+    const { geo } = await req.query;
 
-    const terminal = await tables.terminal.readOperator(longitude);
-
-    if (terminal == null) {
-      res.sendStatus(404);
-    } else {
-      res.status(200).json(terminal);
-    }
-  } catch (err) {
-    next(err);
-  }
-};
-
-const readLatitude = async (req, res, next) => {
-  try {
-    const { latitude } = await req.query;
-
-    const terminal = await tables.terminal.readOperator(latitude);
+    const terminal = await tables.terminal.readGeo(geo);
 
     if (terminal == null) {
       res.sendStatus(404);
@@ -104,6 +88,22 @@ const readLatitude = async (req, res, next) => {
     next(err);
   }
 };
+
+// const readLatitude = async (req, res, next) => {
+//   try {
+//     const { latitude } = await req.query;
+
+//     const terminal = await tables.terminal.readOperator(latitude);
+
+//     if (terminal == null) {
+//       res.sendStatus(404);
+//     } else {
+//       res.status(200).json(terminal);
+//     }
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 /* ******************************* POST ****************************** */
 
@@ -224,8 +224,9 @@ module.exports = {
   readOperator,
   readPower,
   readStatus,
-  readLongitude,
-  readLatitude,
+  readGeo,
+  // readLongitude,
+  // readLatitude,
   add,
   editOperator,
   editPower,
