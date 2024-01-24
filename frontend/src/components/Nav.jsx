@@ -50,18 +50,20 @@ function Nav() {
             Informations
           </Link>
         </li>
-        <li className="navbar_item slide_in_down_4">
-          <Link
-            to="/page/presentation"
-            className="navbar_link link_deconection"
-            onClick={() => {
-              handleShowLinks();
-              logout();
-            }}
-          >
-            Déconexion
-          </Link>
-        </li>
+        {token && (
+          <li className="navbar_item slide_in_down_4">
+            <Link
+              to="/page/presentation"
+              className="navbar_link link_deconection"
+              onClick={() => {
+                handleShowLinks();
+                logout();
+              }}
+            >
+              Déconexion
+            </Link>
+          </li>
+        )}
       </ul>
       <button
         className="navbar_burger"
