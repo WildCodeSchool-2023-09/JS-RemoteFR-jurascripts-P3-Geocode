@@ -7,7 +7,7 @@ function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const { setAuth, setToken, token, auth } = useContext(AuthContext);
+  const { setAuth, auth, setToken, token } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -30,11 +30,9 @@ function Login() {
         setAuth(login.user);
         setToken(login.token);
 
-        const timer = setTimeout(() => {
+        setTimeout(() => {
           navigate("/page/presentation");
         }, 3000);
-
-        timer();
       } else {
         console.info(response);
       }

@@ -9,7 +9,8 @@ function AuthProvider({ children }) {
   const [token, setToken] = useSessionStorage("Token", "");
 
   const logout = () => {
-    setAuth(null);
+    window.location.reload();
+    setAuth("");
     sessionStorage.removeItem("Token");
   };
 

@@ -50,6 +50,11 @@
   background-color: var(--color-green);
   border-radius: 15px;
   padding: 0.4rem 1.3rem;
+  cursor: pointer;
+}
+
+.btn_login:hover {
+  background-color: var(--color-deep-green);
 }
 
 .login_success {
