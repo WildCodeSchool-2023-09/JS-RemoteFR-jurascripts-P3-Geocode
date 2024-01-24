@@ -11,6 +11,7 @@ import Card from "./pages/Card";
 import Connect from "./pages/Connect";
 import Informations from "./pages/Informations";
 import Register from "./pages/Register";
+import Profil from "./pages/Profil";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BornProvider } from "./contexts/BornContext";
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/page/inscription",
         element: <Register />,
+      },
+      {
+        path: "/page/profil",
+        element: <Profil />,
       },
     ],
   },
