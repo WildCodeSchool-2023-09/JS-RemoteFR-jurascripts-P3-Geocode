@@ -12,6 +12,7 @@ import Connect from "./pages/Connect";
 import Informations from "./pages/Informations";
 import Register from "./pages/Register";
 import { AuthProvider } from "./contexts/AuthContext";
+import { BornProvider } from "./contexts/BornContext";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <BornProvider>
+        <RouterProvider router={router} />
+      </BornProvider>
     </AuthProvider>
   </React.StrictMode>
 );
