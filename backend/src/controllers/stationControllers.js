@@ -68,6 +68,8 @@ const add = async (req, res, next) => {
     conditionAcces,
     horaires,
     idStationItinerance,
+    codePostal,
+    ville,
   } = await req.body;
 
   try {
@@ -76,7 +78,9 @@ const add = async (req, res, next) => {
       localisation,
       conditionAcces,
       horaires,
-      idStationItinerance
+      idStationItinerance,
+      codePostal,
+      ville
     );
 
     res.status(201).json(insertId);

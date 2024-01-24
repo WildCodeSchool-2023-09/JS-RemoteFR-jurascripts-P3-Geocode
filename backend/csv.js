@@ -143,6 +143,8 @@ const csv = async () => {
         condition_acces: rowData.condition_acces,
         horaires: rowData.horaires,
         idStationItinerance: rowData.id_station_itinerance,
+        consolidated_code_postal: rowData.consolidated_code_postal,
+        consolidated_ville: rowData.consolidated_ville,
       };
     });
 
@@ -171,13 +173,15 @@ const csv = async () => {
 
     const stationPromises = stationData.map((data) => {
       return database.query(
-        "INSERT INTO station (nom_station, localisation, condition_acces, horaires, id_station_itinerance) VALUES (?, ?, ?, ?, ?)",
+        "INSERT INTO station (nom_station, localisation, condition_acces, horaires, id_station_itinerance, consolidated_code_postal, consolidated_ville) VALUES (?, ?, ?, ?, ?, ?, ?)",
         [
           data.nom_station,
           data.localisation,
           data.condition_acces,
           data.horaires,
           data.idStationItinerance,
+          data.consolidated_code_postal,
+          data.consolidated_ville,
         ]
       );
     });

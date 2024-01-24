@@ -17,7 +17,9 @@ CREATE TABLE `station` (
   `localisation` varchar(150),
   `condition_acces` varchar(50),
   `horaires` varchar(255),
-  `id_station_itinerance`varchar(150)
+  `id_station_itinerance`varchar(150),
+  `consolidated_code_postal` int,
+  `consolidated_ville` varchar(150),
  
 );
 
