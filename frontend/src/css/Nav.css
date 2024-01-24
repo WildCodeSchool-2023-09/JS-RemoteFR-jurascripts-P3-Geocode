@@ -73,6 +73,10 @@ a {
   content: url(../assets/information.png);
 }
 
+.link_deconection::after {
+  content: url(../assets/deconnexion.png);
+}
+
 @media screen and (max-width: 767px) {
   .navbar {
     background: transparent;
