@@ -131,6 +131,7 @@ const csv = async () => {
         prise_type_autre: rowData.prise_type_autre,
         longitude: rowData.consolidated_longitude,
         latitude: rowData.consolidated_latitude,
+        idStationItinerance: rowData.id_station_itinerance,
       };
     });
 
@@ -144,7 +145,7 @@ const csv = async () => {
         horaires: rowData.horaires,
         idStationItinerance: rowData.id_station_itinerance,
         consolidated_code_postal: rowData.consolidated_code_postal,
-        consolidated_ville: rowData.consolidated_ville,
+        consolidated_commune: rowData.consolidated_commune,
       };
     });
 
@@ -173,7 +174,7 @@ const csv = async () => {
 
     const stationPromises = stationData.map((data) => {
       return database.query(
-        "INSERT INTO station (nom_station, localisation, condition_acces, horaires, id_station_itinerance, consolidated_code_postal, consolidated_ville) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO station (nom_station, localisation, condition_acces, horaires, id_station_itinerance, consolidated_code_postal, consolidated_commune) VALUES (?, ?, ?, ?, ?, ?, ?)",
         [
           data.nom_station,
           data.localisation,
@@ -181,7 +182,7 @@ const csv = async () => {
           data.horaires,
           data.idStationItinerance,
           data.consolidated_code_postal,
-          data.consolidated_ville,
+          data.consolidated_commune,
         ]
       );
     });
@@ -210,19 +211,60 @@ const csv = async () => {
 
     /* ******************************* Terminal ****************************** */
 
-    const terminalPromises = terminalData.map((data) => {
-      return database.query(
-        "INSERT INTO terminal (nom_operateur, puissance_nominale, longitude, latitude, plug_id) VALUES (?, ?, ?, ?, ?)",
-        [
-          data.nom_operateur,
-          data.puissance_nominale,
-          data.longitude,
-          data.latitude,
-          conditionPlug(data),
-        ]
-      );
+    const fetchPromise = new Promise((resolve, reject) => {
+      try {
+        fetch(`${process.env.BACKEND_URL}/api/station`, {
+          method: "GET",
+        })
+          .then((res) => res.json())
+          .then((data) => resolve(data))
+          .catch((error) => {
+            console.error(error);
+            reject(error);
+          });
+      } catch (error) {
+        console.error(error);
+        reject(error);
+      }
     });
+
+    const fetchData = await fetchPromise;
+
+    const stationId = (data) => {
+      const station = fetchData.find(
+        (stationFetch) =>
+          stationFetch.id_station_itinerance === data.idStationItinerance
+      );
+
+      if (!station) {
+        console.error("Station not found for data:", data);
+        return null;
+      }
+
+      return station.id;
+    };
+
+    const terminalPromises = terminalData.map((data) => {
+      const stationIdValue = stationId(data);
+
+      if (stationIdValue !== null) {
+        return database.query(
+          "INSERT INTO terminal (nom_operateur, puissance_nominale, longitude, latitude, plug_id, station_id) VALUES (?, ?, ?, ?, ?, ?)",
+          [
+            data.nom_operateur,
+            data.puissance_nominale,
+            data.longitude,
+            data.latitude,
+            conditionPlug(data),
+            stationIdValue,
+          ]
+        );
+      }
+      return null;
+    });
+
     await Promise.all(terminalPromises);
+
     console.info("All rows inserted into terminal table");
 
     /* ******************************* End Database ****************************** */

@@ -57,13 +57,14 @@ SELECT * FROM ${this.table} WHERE id = ?`,
     return rows;
   }
 
-  // async readLatitude(latitude) {
-  //   const [rows] = await this.database.query(
-  //     `SELECT * FROM ${this.table} WHERE latitude = ? `,
-  //     [latitude]
-  //   );
-  //   return rows;
-  // }
+  async findTerminalByRead() {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} AS t
+               INNER JOIN station AS s ON t.station_id = s.id
+               INNER JOIN plug AS p ON t.plug_id = p.id`
+    );
+    return rows;
+  }
 
   /* ******************************* Create ****************************** */
 
@@ -119,14 +120,5 @@ SELECT * FROM ${this.table} WHERE id = ?`,
     );
     return result;
   }
-
-  // async updateLatitude(latitude, id) {
-  //   const [result] = await this.database.query(
-  //     `
-  // UPDATE ${this.table} SET latitude = ? WHERE id = ?`,
-  //     [latitude, id]
-  //   );
-  //   return result;
-  // }
 }
 module.exports = TerminalManager;
