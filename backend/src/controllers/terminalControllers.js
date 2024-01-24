@@ -181,17 +181,14 @@ const editStatus = async (req, res, next) => {
     next(err);
   }
 };
-const editLongitude = async (req, res, next) => {
+const editGeo = async (req, res, next) => {
   try {
-    const longitude = await req.body;
+    const geo = await req.body;
     const id = await req.params.id;
 
-    const updateLongitude = await tables.terminal.updateLongitude(
-      longitude,
-      id
-    );
+    const updateGeo = await tables.terminal.updateGeo(geo, id);
 
-    if (updateLongitude.affectedRows === 0) {
+    if (updateGeo.affectedRows === 0) {
       res.sendStatus(404);
     } else {
       res.sendStatus(204);
@@ -201,22 +198,22 @@ const editLongitude = async (req, res, next) => {
   }
 };
 
-const editLatitude = async (req, res, next) => {
-  try {
-    const latitude = await req.body;
-    const id = await req.params.id;
+// const editLatitude = async (req, res, next) => {
+//   try {
+//     const latitude = await req.body;
+//     const id = await req.params.id;
 
-    const updateLatitude = await tables.terminal.updateLatitude(latitude, id);
+//     const updateLatitude = await tables.terminal.updateLatitude(latitude, id);
 
-    if (updateLatitude.affectedRows === 0) {
-      res.sendStatus(404);
-    } else {
-      res.sendStatus(204);
-    }
-  } catch (err) {
-    next(err);
-  }
-};
+//     if (updateLatitude.affectedRows === 0) {
+//       res.sendStatus(404);
+//     } else {
+//       res.sendStatus(204);
+//     }
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 module.exports = {
   browse,
@@ -231,6 +228,7 @@ module.exports = {
   editOperator,
   editPower,
   editStatus,
-  editLongitude,
-  editLatitude,
+  editGeo,
+  // editLongitude,
+  // editLatitude,
 };

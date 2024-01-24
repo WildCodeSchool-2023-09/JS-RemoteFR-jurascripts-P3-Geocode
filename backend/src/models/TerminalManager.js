@@ -104,22 +104,22 @@ SELECT * FROM ${this.table} WHERE id = ?`,
     return result;
   }
 
-  async updateLongitude(longitude, id) {
+  async updateGeo(longitude, latitude, id) {
     const [result] = await this.database.query(
       `
-  UPDATE ${this.table} SET longitude = ? WHERE id = ?`,
-      [longitude, id]
+  UPDATE ${this.table} SET longitude = ? latitude = ? WHERE id = ?`,
+      [longitude, latitude, id]
     );
     return result;
   }
 
-  async updateLatitude(latitude, id) {
-    const [result] = await this.database.query(
-      `
-  UPDATE ${this.table} SET latitude = ? WHERE id = ?`,
-      [latitude, id]
-    );
-    return result;
-  }
+  // async updateLatitude(latitude, id) {
+  //   const [result] = await this.database.query(
+  //     `
+  // UPDATE ${this.table} SET latitude = ? WHERE id = ?`,
+  //     [latitude, id]
+  //   );
+  //   return result;
+  // }
 }
 module.exports = TerminalManager;
