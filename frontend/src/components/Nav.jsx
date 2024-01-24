@@ -53,7 +53,7 @@ function Nav() {
         <li className="navbar_item slide_in_down_4">
           <Link
             to="/page/presentation"
-            className="navbar_link link_information"
+            className="navbar_link link_deconection"
             onClick={() => {
               handleShowLinks();
               logout();
