@@ -67,18 +67,11 @@ SELECT * FROM ${this.table} WHERE id = ?`,
 
   /* ******************************* Create ****************************** */
 
-  async createStation(
-    nomOperator,
-    power,
-    longitude,
-    latitude,
-    codePostal,
-    ville
-  ) {
+  async createStation(nomOperator, power, longitude, latitude) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (nom_operateur, puissance_nominale, longitude, latitude, consolidated_code_postal, consolidated_ville )
+      `INSERT INTO ${this.table} (nom_operateur, puissance_nominale, longitude, latitude)
     VALUES (?, ?, ?,?)`,
-      [nomOperator, power, longitude, latitude, codePostal, ville]
+      [nomOperator, power, longitude, latitude]
     );
     return result.insertId;
   }
