@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import "../css/Nav.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 function Nav() {
   const [showLinks, setShowLinks] = useState(false);
+  const { token, logout } = useContext(AuthContext);
 
   const handleShowLinks = () => {
     setShowLinks(!showLinks);
@@ -23,7 +25,7 @@ function Nav() {
         </li>
         <li className="navbar_item slide_in_down_2">
           <Link
-            to="/page/connexion"
+            to={!token ? "/page/connexion" : "/page/profil"}
             className="navbar_link link_profil"
             onClick={handleShowLinks}
           >
@@ -48,6 +50,20 @@ function Nav() {
             Informations
           </Link>
         </li>
+        {token && (
+          <li className="navbar_item slide_in_down_4">
+            <Link
+              to="/page/presentation"
+              className="navbar_link link_deconection"
+              onClick={() => {
+                handleShowLinks();
+                logout();
+              }}
+            >
+              Déconexion
+            </Link>
+          </li>
+        )}
       </ul>
       <button
         className="navbar_burger"
