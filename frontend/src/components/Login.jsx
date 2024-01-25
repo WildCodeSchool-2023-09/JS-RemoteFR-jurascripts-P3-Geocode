@@ -29,7 +29,6 @@ function Login() {
         const login = await response.json();
         setAuth(login.user);
         setToken(login.token);
-
         setTimeout(() => {
           navigate("/page/presentation");
         }, 3000);
