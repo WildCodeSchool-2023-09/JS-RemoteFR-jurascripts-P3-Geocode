@@ -1,9 +1,5 @@
 @import "./Variables.css";
 
-.space_informations {
-  padding: 10px;
-}
-
 .informations_page {
   max-width: 87%;
   margin: 0 auto 10px;
