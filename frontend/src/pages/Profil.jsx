@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 import impPro from "../assets/img-profil.png";
 import admin from "../assets/admin.png";
@@ -33,7 +33,9 @@ function Profil() {
       </div>
 
       {auth?.is_admin === 1 && (
-        <img className="logo_profil" src={admin} alt="" />
+        <Link to="/admin">
+          <img className="logo_profil" src={admin} alt="" />
+        </Link>
       )}
     </section>
   );
