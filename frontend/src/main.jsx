@@ -58,6 +58,11 @@ const router = createBrowserRouter([
     element: <Admin />,
   },
   {
+    path: "/page/connexion",
+    element: <Connect />,
+    loader: auth,
+  },
+  {
     path: "/page",
     element: <Home />,
     loader: auth,
@@ -69,11 +74,6 @@ const router = createBrowserRouter([
       {
         path: "/page/carte",
         element: <Card />,
-      },
-      {
-        path: "/page/connexion",
-        element: <Connect />,
-        loader: auth,
       },
       {
         path: "/page/informations",
