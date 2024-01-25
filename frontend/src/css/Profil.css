@@ -1,0 +1,65 @@
+@import "./Variables.css";
+
+.container_profil {
+  margin: 30px auto 10px;
+  padding: 15px;
+  border: 3px solid var(--color-green);
+  border-radius: 11px;
+  width: 75vw;
+  background-color: var(--background-white);
+}
+
+.place_profil {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12%;
+}
+
+.pseudo_profil {
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.logo_profil {
+  height: 60px;
+  margin-bottom: 20px;
+  margin-top: 24px;
+}
+
+.info_users {
+  text-align: center;
+  font-weight: 600;
+  border: 2px solid var(--color-white);
+  background-color: var(--color-green);
+  border-radius: 15px;
+  margin: 1rem auto;
+  padding: 0.4rem 0;
+  max-width: 450px;
+}
+
+.btn_profil {
+  color: white;
+  background-color: #668468;
+  border-radius: 15px;
+  padding: 2.5px 5px;
+  font-size: 13px;
+}
+
+.update_profil {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 0;
+  max-width: 450px;
+}
+
+.empty_user {
+  font-size: 0.9em;
+  color: #555655;
+}
+
+@media screen and (min-width: 768px) {
+  .container_profil {
+    max-width: 578px;
+  }
+}

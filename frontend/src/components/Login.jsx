@@ -1,13 +1,15 @@
 import { useRef, useContext } from "react";
 import "../css/Login.css";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import { AuthContext } from "../contexts/AuthContext";
 
-function Login() {
+function Login({ auth }) {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const { setAuth, auth, setToken, token } = useContext(AuthContext);
+  const { setToken, token } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -27,9 +29,7 @@ function Login() {
       );
       if (response.status === 200) {
         const login = await response.json();
-        setAuth(login.user);
         setToken(login.token);
-
         setTimeout(() => {
           navigate("/page/presentation");
         }, 3000);
@@ -40,13 +40,12 @@ function Login() {
       console.error(err);
     }
   };
-
   return (
     <section className="login">
       {token && (
         <div className="login_success">
           <p className="p_login_success">
-            Bonjour {auth.nickname} Vous êtes maintenant connecté(e) ! Vous
+            Bonjour {auth?.nickname} Vous êtes maintenant connecté(e) ! Vous
             allez être redirigé(e) vers la page d'accueil.
           </p>
         </div>
@@ -84,5 +83,9 @@ function Login() {
     </section>
   );
 }
-
+Login.propTypes = {
+  auth: PropTypes.shape({
+    nickname: PropTypes.string.isRequired,
+  }).isRequired,
+};
 export default Login;

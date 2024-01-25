@@ -7,6 +7,8 @@
 
 .map {
   position: absolute;
+  left: 50%;
+  transform: translate(-50%);
   bottom: 0;
   border: 3px solid var(--color-green);
   border-bottom: none;
@@ -17,4 +19,28 @@
 
 .maplibregl-ctrl-top-right button {
   border: 1px solid var(--color-green);
+}
+
+.popup_map {
+  display: inline-block;
+  position: absolute;
+  left: calc(100vw / 2 - 115px);
+  bottom: calc(100vh / 2 - 98px);
+  height: 92px;
+  width: 230px;
+  padding: 5px;
+  background: var(--background-grey);
+  border: 2px solid var(--color-green);
+  border-radius: 15px;
+}
+
+.popup_map::before {
+  content: url(../assets/hors-ligne.png);
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .popup_map {
+    bottom: calc(100vh / 2 - 46px);
+  }
 }

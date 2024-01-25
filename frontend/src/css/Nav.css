@@ -9,14 +9,10 @@ a {
 }
 
 .navbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
+  grid-row: 1 / 6;
   width: 100%;
   min-height: 75px;
-  padding: 1rem;
+  padding: 0;
   z-index: 1000;
   color: var(--color-white);
 }
@@ -105,7 +101,7 @@ a {
     right: 0;
     top: 0;
     visibility: visible;
-    width: 34vw;
+    width: 29vw;
     height: 100vh;
   }
 
@@ -166,8 +162,8 @@ a {
     border: none;
     display: block;
     position: absolute;
-    top: 9rem;
-    right: 3rem;
+    top: 0.5rem;
+    right: 0.5rem;
   }
 
   .navbar_burger:hover {
