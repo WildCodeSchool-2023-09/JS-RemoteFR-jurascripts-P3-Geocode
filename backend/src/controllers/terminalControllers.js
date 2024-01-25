@@ -89,22 +89,18 @@ const readGeo = async (req, res, next) => {
   }
 };
 
-// const readLatitude = async (req, res, next) => {
-//   try {
-//     const { latitude } = await req.query;
-
-//     const terminal = await tables.terminal.readOperator(latitude);
-
-//     if (terminal == null) {
-//       res.sendStatus(404);
-//     } else {
-//       res.status(200).json(terminal);
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
+const findTerminalRead = async (req, res, next) => {
+  try {
+    const terminal = await tables.terminal.findTerminalByRead();
+    if (terminal == null) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).json(terminal);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
 /* ******************************* POST ****************************** */
 
 const add = async (req, res, next) => {
@@ -198,23 +194,6 @@ const editGeo = async (req, res, next) => {
   }
 };
 
-// const editLatitude = async (req, res, next) => {
-//   try {
-//     const latitude = await req.body;
-//     const id = await req.params.id;
-
-//     const updateLatitude = await tables.terminal.updateLatitude(latitude, id);
-
-//     if (updateLatitude.affectedRows === 0) {
-//       res.sendStatus(404);
-//     } else {
-//       res.sendStatus(204);
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
 module.exports = {
   browse,
   read,
@@ -222,13 +201,10 @@ module.exports = {
   readPower,
   readStatus,
   readGeo,
-  // readLongitude,
-  // readLatitude,
+  findTerminalRead,
   add,
   editOperator,
   editPower,
   editStatus,
   editGeo,
-  // editLongitude,
-  // editLatitude,
 };
