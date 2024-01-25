@@ -8,7 +8,8 @@ import imgProfil from "../assets/img-profil.png";
 import Nav from "../components/Nav";
 
 function Home() {
-  const { token, auth } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
+
   return (
     <div className="container">
       <header className="head">
@@ -19,9 +20,7 @@ function Home() {
             src={!token ? born : imgProfil}
             alt="logo de l'utilisateur"
           />
-          <p className={token ? "nickname_home" : "none_home"}>
-            {auth.nickename};
-          </p>
+          <p>Bidon</p>
         </div>
         <Nav />
       </header>
