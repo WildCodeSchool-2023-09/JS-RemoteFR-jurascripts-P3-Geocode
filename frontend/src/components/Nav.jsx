@@ -5,7 +5,7 @@ import { AuthContext } from "../contexts/AuthContext";
 
 function Nav() {
   const [showLinks, setShowLinks] = useState(false);
-  const { token, logout } = useContext(AuthContext);
+  const { logout, token } = useContext(AuthContext);
 
   const handleShowLinks = () => {
     setShowLinks(!showLinks);

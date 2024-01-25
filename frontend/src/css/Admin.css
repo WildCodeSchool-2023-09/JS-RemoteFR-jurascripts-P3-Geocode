@@ -15,17 +15,17 @@
   height: 130px;
 }
 
-.sign_exit {
+.sign_exit_admin {
   content: url(../assets/deconnexion.png);
   height: 35px;
 }
 
-.separation_of_elements {
+.separation_of_elements_admin {
   display: flex;
   align-items: center;
 }
 
-.btn_modify {
+.btn_modify_admin {
   content: url(../assets/update.png);
   margin: 0 10px;
 }
