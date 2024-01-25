@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Login from "../components/Login";
 import "../css/Connect.css";
 
 function Connect() {
+  const auth = useLoaderData();
+
   return (
     <section className="connect">
       <section className="contenair_connect">
@@ -16,7 +18,7 @@ function Connect() {
           ici.
         </p>
         <span className="span_connect"> </span>
-        <Login />
+        <Login auth={auth} />
         <span className="span_connect"> </span>
         <p className="p_connect">
           Vous pouvez profiter pleinement de nos services en vous inscrivant.

@@ -1,22 +1,22 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useMemo } from "react";
 import { useSessionStorage } from "usehooks-ts";
 import PropTypes from "prop-types";
 
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  const [auth, setAuth] = useState(null);
   const [token, setToken] = useSessionStorage("Token", "");
 
   const logout = () => {
-    window.location.reload();
-    setAuth("");
     sessionStorage.removeItem("Token");
+    window.location.reload();
   };
 
+  //
+
   const authValue = useMemo(
-    () => ({ auth, setAuth, logout, token, setToken }),
-    [auth, setAuth, logout, token, setToken]
+    () => ({ logout, token, setToken }),
+    [logout, token, setToken]
   );
 
   return (
