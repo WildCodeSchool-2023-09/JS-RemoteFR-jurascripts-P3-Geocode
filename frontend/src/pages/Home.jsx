@@ -20,7 +20,7 @@ function Home() {
             src={!token ? born : imgProfil}
             alt="logo de l'utilisateur"
           />
-          <p>Bidon</p>
+          <p className="nickname_home">Bidonhuytr</p>
         </div>
         <Nav />
       </header>
