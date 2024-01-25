@@ -21,7 +21,7 @@ function Home() {
             src={!token ? born : imgProfil}
             alt="logo de l'utilisateur"
           />
-          {!token && !auth ? <p> </p> : <p> {auth?.nickname}</p>}
+          {token && auth && <p className="nickname_home"> {auth?.nickname}</p>}
         </div>
         <Nav />
       </header>
