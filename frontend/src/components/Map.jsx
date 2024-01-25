@@ -6,7 +6,6 @@ import { BornContext } from "../contexts/BornContext";
 
 export default function Map() {
   const { terminalData, loadingTerminal } = useContext(BornContext);
-  // console.log([`${terminalData[0].longitude},${terminalData[0].latitude}`]);
   const mapContainer = useRef(null);
   const map = useRef(null);
   const city = { lng: 2.333333, lat: 48.866667 };
@@ -14,7 +13,13 @@ export default function Map() {
 
   maptilersdk.config.apiKey = "hJl8991OQz7TVl2QGIsC";
   if (loadingTerminal) {
-    return <p>coucou</p>;
+    return (
+      <p className="popup_map">
+        Problème de connexion
+        <br />
+        Veuillez vous reconnecter ultérieurement
+      </p>
+    );
   }
   useEffect(() => {
     if (map.current) return;
