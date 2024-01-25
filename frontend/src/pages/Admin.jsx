@@ -7,12 +7,12 @@ function Admin() {
     <div className="space_admin">
       <header className="container_admin">
         <img className="logo_home_admin" src={logo} alt="logo de GeoCode" />
-        <Link className="sign_exit" to="/page/presentation" />
+        <Link className="sign_exit_admin" to="/page/presentation" />
       </header>
       <section className="admin_page">
         <h2 className="title_admin">Panel Administrateur</h2>
-        <div className="separation_of_elements">
-          <Link className="btn_modify" to="/" />
+        <div className="separation_of_elements_admin">
+          <Link className="btn_modify_admin" to="/" />
           <table>
             <thead>
               <th scope="col">Ville</th>

@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
 import { useContext } from "react";
+import { Outlet, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import "../css/Home.css";
 import logo from "../assets/logo.png";
@@ -8,6 +8,7 @@ import imgProfil from "../assets/img-profil.png";
 import Nav from "../components/Nav";
 
 function Home() {
+  const auth = useLoaderData();
   const { token } = useContext(AuthContext);
 
   return (
@@ -20,7 +21,7 @@ function Home() {
             src={!token ? born : imgProfil}
             alt="logo de l'utilisateur"
           />
-          <p className="nickname_home">Bidonhuytr</p>
+          {token && auth && <p className="nickname_home"> {auth?.nickname}</p>}
         </div>
         <Nav />
       </header>
