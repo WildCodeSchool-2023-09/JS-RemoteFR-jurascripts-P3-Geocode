@@ -1,0 +1,53 @@
+@import "./Variables.css";
+
+.space_admin {
+  padding: 10px;
+}
+
+.container_admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 51px 20px;
+}
+
+.logo_home_admin {
+  height: 130px;
+}
+
+.sign_exit {
+  content: url(../assets/deconnexion.png);
+  height: 35px;
+}
+
+.separation_of_elements {
+  display: flex;
+  align-items: center;
+}
+
+.btn_modify {
+  content: url(../assets/update.png);
+  margin: 0 10px;
+}
+
+.admin_page {
+  max-width: 87%;
+  margin: 0 auto 10px;
+  padding: 15px;
+  box-shadow: 0 0 20px 3px black;
+  border-radius: 15px;
+}
+
+.title_admin {
+  text-align: center;
+}
+
+td,
+th {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px;
+}
+
+td {
+  text-align: center;
+}
