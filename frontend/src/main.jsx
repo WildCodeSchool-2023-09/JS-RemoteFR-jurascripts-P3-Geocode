@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Presentation from "./pages/Presentation";
 import Error from "./pages/Error";
+import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 import Card from "./pages/Card";
 import Connect from "./pages/Connect";
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/*",
     element: <Error />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
   },
   {
     path: "/page",
