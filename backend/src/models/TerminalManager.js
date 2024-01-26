@@ -59,7 +59,10 @@ SELECT * FROM ${this.table} WHERE id = ?`,
 
   async findTerminalByRead() {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} AS t
+      `SELECT t.id, t.nom_operateur, t.puissance_nominale, t.plug_id, t.station_id, t.status, t.longitude, t.latitude, 
+      s.nom_station, s.localisation, s.condition_acces, s.horaires, s.id_station_itinerance, s.consolidated_code_postal, 
+      s.consolidated_commune, p.prise_type_ef, p.prise_type_2, p.prise_type_combo_ccs, p.prise_type_chademo, p.prise_type_autre 
+      FROM ${this.table} AS t
                INNER JOIN station AS s ON t.station_id = s.id
                INNER JOIN plug AS p ON t.plug_id = p.id`
     );

@@ -56,6 +56,7 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
+    loader: auth,
   },
   {
     path: "/page/connexion",
