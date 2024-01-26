@@ -33,14 +33,6 @@ SELECT * FROM ${this.table} WHERE id = ?`,
     return rows;
   }
 
-  async readStationItinerance(idStationItinerance) {
-    const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE id_station_itinerance = ? `,
-      [idStationItinerance]
-    );
-    return rows;
-  }
-
   /* ******************************* Create ****************************** */
 
   async createStation(
@@ -91,15 +83,6 @@ SELECT * FROM ${this.table} WHERE id = ?`,
       `
   UPDATE ${this.table} SET horaires = ? WHERE id = ?`,
       [hours, id]
-    );
-    return result;
-  }
-
-  async updateStationItinerance(idStationItinerance, id) {
-    const [result] = await this.database.query(
-      `
-  UPDATE ${this.table} SET id_station_itinerance = ? WHERE id = ?`,
-      [idStationItinerance, id]
     );
     return result;
   }

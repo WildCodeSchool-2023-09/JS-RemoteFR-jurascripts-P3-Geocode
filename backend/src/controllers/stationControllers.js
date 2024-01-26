@@ -41,24 +41,6 @@ const readLocation = async (req, res, next) => {
   }
 };
 
-const readStationItinerance = async (req, res, next) => {
-  try {
-    const { stationItinerance } = await req.query;
-
-    const stationId = await tables.station.readStationItinerance(
-      stationItinerance
-    );
-
-    if (stationId == null) {
-      res.sendStatus(404);
-    } else {
-      res.status(200).json(stationId);
-    }
-  } catch (err) {
-    next(err);
-  }
-};
-
 /* ******************************* POST ****************************** */
 
 const add = async (req, res, next) => {
@@ -158,26 +140,6 @@ const editHours = async (req, res, next) => {
   }
 };
 
-const editStationItinerances = async (req, res, next) => {
-  try {
-    const stationItinerance = await req.body;
-    const id = await req.params.id;
-
-    const updateHours = await tables.station.updateStationItinerance(
-      stationItinerance,
-      id
-    );
-
-    if (updateHours.affectedRows === 0) {
-      res.sendStatus(404);
-    } else {
-      res.sendStatus(204);
-    }
-  } catch (err) {
-    next(err);
-  }
-};
-
 module.exports = {
   browse,
   read,
@@ -187,6 +149,4 @@ module.exports = {
   editLocation,
   editAcces,
   editHours,
-  readStationItinerance,
-  editStationItinerances,
 };
