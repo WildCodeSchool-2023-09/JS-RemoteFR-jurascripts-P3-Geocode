@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import "../css/Home.css";
-import logo from "../assets/logo.png";
-import born from "../assets/born.png";
-import imgProfil from "../assets/img-profil.png";
+import logo from "../assets/logo.webp";
+import born from "../assets/born.webp";
+import imgProfil from "../assets/img-profil.webp";
 import Nav from "../components/Nav";
 
 function Home() {

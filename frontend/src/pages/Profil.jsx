@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import impPro from "../assets/img-profil.png";
-import admin from "../assets/admin.png";
+import impPro from "../assets/img-profil.webp";
+import admin from "../assets/admin.webp";
 import "../css/Profil.css";
 
 function Profil() {
