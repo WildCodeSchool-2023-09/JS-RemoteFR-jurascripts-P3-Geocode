@@ -116,10 +116,7 @@ function Admin() {
                   !isLoading &&
                   datasBorn.map((data) => (
                     <tr key={data.id}>
-                      {/* <div
-                        className="btn_modify_admin"
-                        onClick={handleClick(data.id)}
-                      /> */}
+                      <div className="btn_modify_admin" />
                       <td>{data.consolidated_commune}</td>
                       <td>{data.consolidated_code_postal}</td>
                       <td>{data.localisation}</td>
