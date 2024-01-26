@@ -79,6 +79,10 @@ a {
     position: absolute;
   }
 
+  .hide_nav li {
+    display: none;
+  }
+
   ::after {
     display: none;
   }
