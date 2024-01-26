@@ -21,13 +21,13 @@ a {
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: -119px;
+  left: -129px;
   top: 247px;
 }
 
 .navbar_item:hover {
   transition: 0.5s ease-in-out;
-  transform: translateX(115px);
+  transform: translateX(126px);
 }
 
 .navbar_link {
@@ -41,7 +41,7 @@ a {
   border: 3px solid var(--color-green);
   border-radius: 0 17px 17px 0;
   height: 38px;
-  width: 140px;
+  width: 150px;
   z-index: 100;
 }
 
