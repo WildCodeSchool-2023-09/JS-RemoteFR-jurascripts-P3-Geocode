@@ -54,23 +54,23 @@ a {
 }
 
 .link_accueil::after {
-  content: url(../assets/accueil.png);
+  content: url(../assets/accueil.webp);
 }
 
 .link_profil::after {
-  content: url(../assets/utilisateur.png);
+  content: url(../assets/utilisateur_1.webp);
 }
 
 .link_carte::after {
-  content: url(../assets/francais.png);
+  content: url(../assets/francais.webp);
 }
 
 .link_information::after {
-  content: url(../assets/information.png);
+  content: url(../assets/information.webp);
 }
 
 .link_deconection::after {
-  content: url(../assets/deconnexion.png);
+  content: url(../assets/deconnexion.webp);
 }
 
 @media screen and (max-width: 767px) {
