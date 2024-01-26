@@ -11,20 +11,25 @@
 
 .place_profil {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   padding: 0 12%;
 }
 
 .pseudo_profil {
-  margin-top: 40px;
+  margin: 10px 0;
   font-weight: bold;
   font-size: 25px;
 }
 
+.place_logo_profil {
+  display: flex;
+  justify-content: space-between;
+}
+
 .logo_profil {
   height: 60px;
-  margin-bottom: 20px;
-  margin-top: 24px;
+  margin: 10px 0;
 }
 
 .info_users {
