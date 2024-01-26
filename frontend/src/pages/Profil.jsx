@@ -10,8 +10,15 @@ function Profil() {
   return (
     <section className="container_profil">
       <div className="place_profil">
+        <div className="place_logo_profil">
+          <img className="logo_profil" src={impPro} alt="profil" />
+          {auth?.is_admin === 1 && (
+            <Link to="/admin">
+              <img className="logo_profil" src={admin} alt="" />
+            </Link>
+          )}
+        </div>
         <p className="pseudo_profil">{auth?.nickname}</p>
-        <img className="logo_profil" src={impPro} alt="profil" />
       </div>
 
       {auth?.lastname ? (
@@ -31,12 +38,6 @@ function Profil() {
         <bouton className="btn_profil">Modifier le Profil</bouton>
         <bouton className="btn_profil">Modifier le Mail</bouton>
       </div>
-
-      {auth?.is_admin === 1 && (
-        <Link to="/admin">
-          <img className="logo_profil" src={admin} alt="" />
-        </Link>
-      )}
     </section>
   );
 }
