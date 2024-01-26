@@ -27,7 +27,7 @@
 
 .btn_modify_admin {
   content: url(../assets/update.png);
-  margin: 0 10px;
+  margin: 10px 10px;
 }
 
 .admin_page {
