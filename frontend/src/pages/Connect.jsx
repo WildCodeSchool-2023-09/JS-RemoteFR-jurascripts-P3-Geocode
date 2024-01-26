@@ -4,9 +4,9 @@ import Login from "../components/Login";
 import "../css/Connect.css";
 import Nav from "../components/Nav";
 import { AuthContext } from "../contexts/AuthContext";
-import logo from "../assets/logo.png";
-import born from "../assets/born.png";
-import imgProfil from "../assets/img-profil.png";
+import logo from "../assets/logo.webp";
+import born from "../assets/born.webp";
+import imgProfil from "../assets/img-profil.webp";
 
 function Connect() {
   const { token } = useContext(AuthContext);

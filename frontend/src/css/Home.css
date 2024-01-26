@@ -14,17 +14,17 @@ body {
 }
 
 .head {
-  height: 198px;
+  height: 120px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(5, 1fr);
 }
 
 .logo_home {
-  height: 130px;
+  height: 120px;
   margin: auto;
   grid-column: 4 / 8;
-  grid-row: 1 / 5;
+  grid-row: 1 / 6;
 }
 
 .container_user_home {

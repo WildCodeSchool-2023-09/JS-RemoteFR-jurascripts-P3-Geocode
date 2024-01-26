@@ -1,7 +1,7 @@
 import "./css/App.css";
 import { Link } from "react-router-dom";
-import logo from "./assets/logo.png";
-import terminal from "./assets/born.png";
+import logo from "./assets/logo.webp";
+import terminal from "./assets/born.webp";
 
 function App() {
   return (

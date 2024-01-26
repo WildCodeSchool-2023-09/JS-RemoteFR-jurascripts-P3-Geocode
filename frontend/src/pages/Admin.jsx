@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../css/Admin.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 function Admin() {
   return (
