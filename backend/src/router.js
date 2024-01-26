@@ -53,6 +53,7 @@ router.get("/terminal/power", terminalControllers.readPower);
 router.get("/terminal/status", terminalControllers.readStatus);
 router.get("/terminal/geo", terminalControllers.readGeo);
 router.get("/terminal/findTerminal", terminalControllers.findTerminalRead);
+router.get("/terminal/geoStation", terminalControllers.readStationGeo);
 router.get("/terminal/:id", terminalControllers.read);
 
 // ***** POST
@@ -63,6 +64,7 @@ router.put("terminal/operator/:id", terminalControllers.editOperator);
 router.put("terminal/power/:id", terminalControllers.editPower);
 router.put("terminal/status/:id", terminalControllers.editStatus);
 router.put("terminal/geo/:id", terminalControllers.editGeo);
+router.put("terminal/full/:id", terminalControllers.editFindTerminal);
 
 /* ************************************************************************* */
 

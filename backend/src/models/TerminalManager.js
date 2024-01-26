@@ -69,6 +69,16 @@ SELECT * FROM ${this.table} WHERE id = ?`,
     return rows;
   }
 
+  async stationGeoRead() {
+    const [rows] = await this.database.query(
+      `SELECT MAX(t.id) AS id, s.id AS station_id, MAX(t.longitude) AS longitude, MAX(t.latitude) AS latitude
+FROM station AS s
+LEFT JOIN terminal AS t ON t.station_id = s.id
+GROUP BY s.id`
+    );
+    return rows;
+  }
+
   /* ******************************* Create ****************************** */
 
   async createStation(
@@ -120,6 +130,57 @@ SELECT * FROM ${this.table} WHERE id = ?`,
       `
   UPDATE ${this.table} SET longitude = ? latitude = ? WHERE id = ?`,
       [longitude, latitude, id]
+    );
+    return result;
+  }
+
+  async updateTerminalById(terminalId, updatedData) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} AS t
+    INNER JOIN station AS s ON t.station_id = s.id
+    INNER JOIN plug AS p ON t.plug_id = p.id
+    SET 
+      t.nom_operateur = ?,
+      t.puissance_nominale = ?,
+      t.plug_id = ?,
+      t.station_id = ?,
+      t.status = ?,
+      t.longitude = ?,
+      t.latitude = ?,
+      s.nom_station = ?,
+      s.localisation = ?,
+      s.condition_acces = ?,
+      s.horaires = ?,
+      s.consolidated_code_postal = ?,
+      s.consolidated_commune = ?,
+      p.prise_type_ef = ?,
+      p.prise_type_2 = ?,
+      p.prise_type_combo_ccs = ?,
+      p.prise_type_chademo = ?,
+      p.prise_type_autre = ?
+    WHERE t.id = ?
+  `,
+      [
+        updatedData.nom_operateur,
+        updatedData.puissance_nominale,
+        updatedData.plug_id,
+        updatedData.station_id,
+        updatedData.status,
+        updatedData.longitude,
+        updatedData.latitude,
+        updatedData.nom_station,
+        updatedData.localisation,
+        updatedData.condition_acces,
+        updatedData.horaires,
+        updatedData.consolidated_code_postal,
+        updatedData.consolidated_commune,
+        updatedData.prise_type_ef,
+        updatedData.prise_type_2,
+        updatedData.prise_type_combo_ccs,
+        updatedData.prise_type_chademo,
+        updatedData.prise_type_autre,
+        terminalId,
+      ]
     );
     return result;
   }
