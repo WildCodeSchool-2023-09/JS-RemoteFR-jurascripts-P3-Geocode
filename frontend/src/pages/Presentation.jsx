@@ -1,6 +1,6 @@
 import "../css/Presentation.css";
-import tree from "../assets/tree.png";
-import car from "../assets/car.png";
+import tree from "../assets/tree.webp";
+import car from "../assets/car.webp";
 
 function Presentation() {
   return (

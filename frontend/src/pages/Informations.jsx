@@ -1,6 +1,6 @@
 import "../css/Informations.css";
-import terminal from "../assets/terminal.png";
-import plugtable from "../assets/plug-table.png";
+import terminal from "../assets/terminal.webp";
+import plugtable from "../assets/plug-table.webp";
 
 function Informations() {
   return (
