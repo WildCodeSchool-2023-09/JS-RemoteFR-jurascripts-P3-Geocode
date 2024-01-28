@@ -34,7 +34,6 @@ router.post("/login", authControllers.login);
 // ***** GET
 router.get("/station", stationControllers.browse);
 router.get("/station/address", stationControllers.readLocation);
-router.get("/station/itinerance", stationControllers.readStationItinerance);
 router.get("/station/:id", stationControllers.read);
 
 // ***** POST
@@ -45,10 +44,6 @@ router.put("/station/name/:id", stationControllers.editName);
 router.put("/station/address/:id", stationControllers.editLocation);
 router.put("/station/acces/:id", stationControllers.editAcces);
 router.put("/station/hours/:id", stationControllers.editHours);
-router.put(
-  "/station/itinerance/:id",
-  stationControllers.editStationItinerances
-);
 
 /* ******************************* Terminal ****************************** */
 // ***** GET
@@ -58,6 +53,7 @@ router.get("/terminal/power", terminalControllers.readPower);
 router.get("/terminal/status", terminalControllers.readStatus);
 router.get("/terminal/geo", terminalControllers.readGeo);
 router.get("/terminal/findTerminal", terminalControllers.findTerminalRead);
+router.get("/terminal/geoStation", terminalControllers.readStationGeo);
 router.get("/terminal/:id", terminalControllers.read);
 
 // ***** POST
@@ -68,6 +64,7 @@ router.put("terminal/operator/:id", terminalControllers.editOperator);
 router.put("terminal/power/:id", terminalControllers.editPower);
 router.put("terminal/status/:id", terminalControllers.editStatus);
 router.put("terminal/geo/:id", terminalControllers.editGeo);
+router.put("terminal/full/:id", terminalControllers.editFindTerminal);
 
 /* ************************************************************************* */
 
