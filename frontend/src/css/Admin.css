@@ -16,7 +16,7 @@
 }
 
 .sign_exit_admin {
-  content: url(../assets/deconnexion.png);
+  content: url(../assets/deconnexion.webp);
   height: 35px;
 }
 
@@ -26,8 +26,8 @@
 }
 
 .btn_modify_admin {
-  content: url(../assets/update.png);
-  margin: 10px 10px;
+  content: url(../assets/update.webp);
+  margin: 0 10px;
 }
 
 .admin_page {

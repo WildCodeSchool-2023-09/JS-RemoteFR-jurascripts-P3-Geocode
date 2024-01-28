@@ -21,13 +21,13 @@ a {
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: -119px;
+  left: -129px;
   top: 247px;
 }
 
 .navbar_item:hover {
   transition: 0.5s ease-in-out;
-  transform: translateX(115px);
+  transform: translateX(126px);
 }
 
 .navbar_link {
@@ -41,7 +41,7 @@ a {
   border: 3px solid var(--color-green);
   border-radius: 0 17px 17px 0;
   height: 38px;
-  width: 140px;
+  width: 150px;
   z-index: 100;
 }
 
@@ -54,23 +54,23 @@ a {
 }
 
 .link_accueil::after {
-  content: url(../assets/accueil.png);
+  content: url(../assets/accueil.webp);
 }
 
 .link_profil::after {
-  content: url(../assets/utilisateur.png);
+  content: url(../assets/utilisateur_1.webp);
 }
 
 .link_carte::after {
-  content: url(../assets/francais.png);
+  content: url(../assets/francais.webp);
 }
 
 .link_information::after {
-  content: url(../assets/information.png);
+  content: url(../assets/information.webp);
 }
 
 .link_deconection::after {
-  content: url(../assets/deconnexion.png);
+  content: url(../assets/deconnexion.webp);
 }
 
 @media screen and (max-width: 767px) {
