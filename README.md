@@ -3,7 +3,24 @@
 
 # Concept du projet (dans le cadre d'une formation de développeur web et web mobile)
 
+La société GeoCode souhaite développer un prototype d'une application  web qui a pour objectif de mettre à disposition une carte interactive à destination des utilisateurs de véhicules électriques. 
+
+### Demande du client
 Etre en possession d'un MVP fonctionnel pour notre présentation auprès de la société GeoCode - site web responsive (exportation vers une application mobile probable)
+
+## Choix du client
+### Design
+Deux maquette on été présenté au client, après qu'il est fait son choix nous avons tout mis en oeuvre pour ètre au plus proche de la maquette.
+
+![Maquette du site](
+
+## Equipe
+
+Nelson Almeida
+Xavier Mesnildrey
+Valentin Cardon
+Jordan Chatelain
+Cedric Bodereau
 
 # Configuration et utilisation (partie technique)
 
