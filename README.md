@@ -12,7 +12,8 @@ Etre en possession d'un MVP fonctionnel pour notre présentation auprès de la s
 ### Design
 Deux maquette on été présenté au client, après qu'il est fait son choix nous avons tout mis en oeuvre pour ètre au plus proche de la maquette.
 
-![Maquette du site](
+![Capture-figma](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-jurascripts-P3-Geocode/assets/144217492/ca6575fd-453f-4596-a24d-57525b94851b)
+
 
 ## Equipe
 
