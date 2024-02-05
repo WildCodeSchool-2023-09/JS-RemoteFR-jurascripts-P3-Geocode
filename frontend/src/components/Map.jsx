@@ -1,18 +1,18 @@
-import { useRef, useEffect, useState, useContext } from "react";
+import { useRef, useEffect, useState } from "react";
 import * as maptilersdk from "@maptiler/sdk";
+import { useLoaderData } from "react-router-dom";
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import "../css/Map.css";
-import { BornContext } from "../contexts/BornContext";
 
 export default function Map() {
-  const { terminalData, loadingTerminal } = useContext(BornContext);
+  const fetchBornes = useLoaderData();
   const mapContainer = useRef(null);
   const map = useRef(null);
   const city = { lng: 2.333333, lat: 48.866667 };
   const [zoom] = useState(11);
 
   maptilersdk.config.apiKey = "hJl8991OQz7TVl2QGIsC";
-  if (loadingTerminal) {
+  if (!fetchBornes) {
     return (
       <p className="popup_map">
         Problème de connexion
@@ -30,7 +30,7 @@ export default function Map() {
       center: [city.lng, city.lat],
       zoom: 5,
     });
-    terminalData.forEach((coordinate) => {
+    fetchBornes.forEach((coordinate) => {
       const longitude = parseFloat(coordinate.longitude);
       const latitude = parseFloat(coordinate.latitude);
 

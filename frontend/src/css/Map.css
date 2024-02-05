@@ -35,7 +35,7 @@
 }
 
 .popup_map::before {
-  content: url(../assets/hors-ligne.png);
+  content: url(../assets/hors-ligne.webp);
   display: block;
 }
 
