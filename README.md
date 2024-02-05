@@ -10,10 +10,16 @@ Etre en possession d'un MVP fonctionnel pour notre présentation auprès de la s
 
 ## Choix du client
 ### Design
-Deux maquette on été présenté au client, après qu'il est fait son choix nous avons tout mis en oeuvre pour ètre au plus proche de la maquette.
+Deux maquette on été présenté au client après avoir étudié sa charte graphique, après qu'il est fait son choix nous avons tout mis en oeuvre pour ètre au plus proche de la maquette.
 
+### Charte graphique
+![Copie de Colors](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-jurascripts-P3-Geocode/assets/144217492/b2d3a355-a01a-4a5d-8487-7656d15e03e1)
+
+
+### Maquette
 ![Capture-figma](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-jurascripts-P3-Geocode/assets/144217492/ca6575fd-453f-4596-a24d-57525b94851b)
 
+Des modification on été apporté pour que le site soit plus accessible.
 
 ## Equipe
 
