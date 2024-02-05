@@ -1,22 +1,27 @@
-
 ![Logo](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-jurascripts-P3-Geocode/assets/144217492/f7f55f76-228f-4843-8625-3308272b67e4)
 
-# Concept du projet (dans le cadre d'une formation de développeur web et web mobile)
+# Concept du projet (Partie présentation)
+Dans le cadre d'une formation de développeur web et web mobile
 
 La société GeoCode souhaite développer un prototype d'une application  web qui a pour objectif de mettre à disposition une carte interactive à destination des utilisateurs de véhicules électriques. 
 
 ### Demande du client
+
 Etre en possession d'un MVP fonctionnel pour notre présentation auprès de la société GeoCode - site web responsive (exportation vers une application mobile probable)
 
 ## Choix du client
+
 ### Design
+
 Deux maquette on été présenté au client après avoir étudié sa charte graphique, après qu'il est fait son choix nous avons tout mis en oeuvre pour ètre au plus proche de la maquette.
 
 #### Charte graphique
+
 ![Copie de Colors](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-jurascripts-P3-Geocode/assets/144217492/b2d3a355-a01a-4a5d-8487-7656d15e03e1)
 
 
 #### Maquette
+
 ![Capture-figma](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-jurascripts-P3-Geocode/assets/144217492/ca6575fd-453f-4596-a24d-57525b94851b)
 
 Des modification on été apporté pour que le site soit plus accessible.
@@ -28,6 +33,9 @@ Xavier Mesnildrey
 Valentin Cardon
 Jordan Chatelain
 Cedric Bodereau
+
+
+
 
 # Configuration et utilisation (partie technique)
 
