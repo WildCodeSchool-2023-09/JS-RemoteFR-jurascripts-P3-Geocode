@@ -44,6 +44,24 @@ const auth = async () => {
   }
 };
 
+const fetchBornes = async () => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/terminal/geoStation`
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching bornes data:", error);
+    return null;
+  }
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -75,6 +93,7 @@ const router = createBrowserRouter([
       {
         path: "/page/carte",
         element: <Card />,
+        loader: fetchBornes,
       },
       {
         path: "/page/informations",
