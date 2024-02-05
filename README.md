@@ -1,11 +1,11 @@
 
 ![Logo](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-jurascripts-P3-Geocode/assets/144217492/f7f55f76-228f-4843-8625-3308272b67e4)
 
-**** Concept du projet (dans le cadre d'une formation de développeur web et web mobile)
+# Concept du projet (dans le cadre d'une formation de développeur web et web mobile)
 
 Etre en possession d'un MVP fonctionnel pour notre présentation auprès de la société GeoCode - site web responsive (exportation vers une application mobile probable)
 
-###### Configuration et utilisation (partie technique)
+# Configuration et utilisation (partie technique)
 
 ### Utilisateurs Windows
 
