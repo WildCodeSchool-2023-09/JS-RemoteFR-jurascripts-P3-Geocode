@@ -1,33 +1,14 @@
 const userData = [
   {
-    firstname: "Henri",
-    lastname: "ARHANCET",
+    firstname: "admin",
+    lastname: "admin",
     nickname: "admin",
-    email: "henriLass@gmail.com",
-    password: "admin",
+    email: "admin@admin.fr",
+    password:
+      "$argon2id$v=19$m=19456,t=2,p=1$LGV9hy01o57Ttgge05JTTw$eNnOZKo4go3ArlkSrnm+NdY70voU9OtBm+RwzP1SeEI",
     register_date: "2018-09-15 10:35:22",
     city: "Bayonne",
     is_admin: 1,
-  },
-  {
-    firstname: "Paul",
-    lastname: "VANDERAVEN",
-    nickname: "Biloute",
-    email: "paulvanderaven@gmail.com",
-    password: "Lilloisgelé",
-    register_date: "2018-09-16 10:35:22",
-    city: "Lille",
-    is_admin: 0,
-  },
-  {
-    firstname: "Pépito",
-    lastname: "CHOCOBARES",
-    nickname: "Chocobest",
-    email: "pepitochoco@gmail.com",
-    password: "chocobon",
-    register_date: "2018-09-17 10:35:22",
-    city: "Dax",
-    is_admin: 0,
   },
 ];
 
