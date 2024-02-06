@@ -14,24 +14,47 @@ body {
 }
 
 .head {
-  height: 198px;
+  height: 120px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(5, 1fr);
 }
 
 .logo_home {
-  height: 130px;
+  height: 120px;
   margin: auto;
   grid-column: 4 / 8;
-  grid-row: 1 / 5;
+  grid-row: 1 / 6;
+}
+
+.container_user_home {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  grid-column: 1 / 4;
+  grid-row: 3 / 6;
+}
+
+.none_home {
+  display: none;
+}
+
+.nickname_home {
+  margin: 0;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--color-white);
+  border-radius: 15px;
+  padding: 5px;
+  background: var(--background-grey);
 }
 
 .user_home {
-  height: 75px;
-  margin: auto;
-  grid-column: 1 / 4;
-  grid-row: 4 / 6;
+  max-height: 60px;
+  max-width: 60px;
+  width: 35%;
 }
 
 .navbar_burger {
@@ -55,12 +78,12 @@ body {
   .logo_home {
     height: 98%;
     grid-column: 1 / 4;
-    grid-row: 1 / 5;
+    grid-row: 1 / 6;
   }
 
-  .user_home {
+  .container_user_home {
     height: 80%;
     grid-column: 8 / 10;
-    grid-row: 2 / 5;
+    grid-row: 2 / 6;
   }
 }

@@ -1,31 +1,28 @@
-import { Link, Outlet } from "react-router-dom";
 import { useContext } from "react";
+import { Outlet, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import "../css/Home.css";
-import logo from "../assets/logo.png";
-import born from "../assets/born.png";
-import imgProfil from "../assets/img-profil.png";
+import logo from "../assets/logo.webp";
+import born from "../assets/born.webp";
+import imgProfil from "../assets/img-profil.webp";
 import Nav from "../components/Nav";
 
 function Home() {
-  const { token, auth } = useContext(AuthContext);
+  const auth = useLoaderData();
+  const { token } = useContext(AuthContext);
+
   return (
     <div className="container">
       <header className="head">
         <img className="logo_home" src={logo} alt="logo de GeoCode" />
-        <Link
-          className="user_home"
-          to={!token ? "/page/connexion" : "/page/profil"}
-        >
+        <div className="container_user_home">
           <img
             className="user_home"
             src={!token ? born : imgProfil}
             alt="logo de l'utilisateur"
           />
-          <p className="user_p_logo">
-            {!token ? "Se Connecter" : auth.nickname}
-          </p>
-        </Link>
+          {token && auth && <p className="nickname_home"> {auth?.nickname}</p>}
+        </div>
         <Nav />
       </header>
       <main>

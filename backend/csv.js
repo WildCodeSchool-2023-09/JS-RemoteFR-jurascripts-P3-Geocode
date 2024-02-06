@@ -173,19 +173,26 @@ const csv = async () => {
     /* ******************************* Station ****************************** */
 
     const stationPromises = stationData.map((data) => {
-      return database.query(
-        "INSERT INTO station (nom_station, localisation, condition_acces, horaires, id_station_itinerance, consolidated_code_postal, consolidated_commune) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        [
-          data.nom_station,
-          data.localisation,
-          data.condition_acces,
-          data.horaires,
-          data.idStationItinerance,
-          data.consolidated_code_postal,
-          data.consolidated_commune,
-        ]
-      );
+      if (
+        data.idStationItinerance !== null &&
+        data.idStationItinerance !== undefined
+      ) {
+        return database.query(
+          "INSERT INTO station (id, nom_station, localisation, condition_acces, horaires, consolidated_code_postal, consolidated_commune) VALUES (?, ?, ?, ?, ?, ?, ?)",
+          [
+            data.idStationItinerance,
+            data.nom_station,
+            data.localisation,
+            data.condition_acces,
+            data.horaires,
+            data.consolidated_code_postal,
+            data.consolidated_commune,
+          ]
+        );
+      }
+      return Promise.resolve();
     });
+
     await Promise.all(stationPromises);
     console.info("All rows inserted into station table");
 
@@ -211,29 +218,10 @@ const csv = async () => {
 
     /* ******************************* Terminal ****************************** */
 
-    const fetchPromise = new Promise((resolve, reject) => {
-      try {
-        fetch(`${process.env.BACKEND_URL}/api/station`, {
-          method: "GET",
-        })
-          .then((res) => res.json())
-          .then((data) => resolve(data))
-          .catch((error) => {
-            console.error(error);
-            reject(error);
-          });
-      } catch (error) {
-        console.error(error);
-        reject(error);
-      }
-    });
-
-    const fetchData = await fetchPromise;
-
     const stationId = (data) => {
-      const station = fetchData.find(
-        (stationFetch) =>
-          stationFetch.id_station_itinerance === data.idStationItinerance
+      const station = stationData.find(
+        (stationIdData) =>
+          stationIdData.idStationItinerance === data.idStationItinerance
       );
 
       if (!station) {
@@ -241,7 +229,7 @@ const csv = async () => {
         return null;
       }
 
-      return station.id;
+      return station.idStationItinerance;
     };
 
     const terminalPromises = terminalData.map((data) => {

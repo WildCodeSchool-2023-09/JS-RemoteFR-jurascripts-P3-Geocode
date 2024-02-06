@@ -9,14 +9,10 @@ a {
 }
 
 .navbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
+  grid-row: 1 / 6;
   width: 100%;
   min-height: 75px;
-  padding: 1rem;
+  padding: 0;
   z-index: 1000;
   color: var(--color-white);
 }
@@ -25,13 +21,13 @@ a {
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: -119px;
+  left: -129px;
   top: 247px;
 }
 
 .navbar_item:hover {
   transition: 0.5s ease-in-out;
-  transform: translateX(115px);
+  transform: translateX(126px);
 }
 
 .navbar_link {
@@ -45,7 +41,7 @@ a {
   border: 3px solid var(--color-green);
   border-radius: 0 17px 17px 0;
   height: 38px;
-  width: 140px;
+  width: 150px;
   z-index: 100;
 }
 
@@ -58,29 +54,33 @@ a {
 }
 
 .link_accueil::after {
-  content: url(../assets/accueil.png);
+  content: url(../assets/accueil.webp);
 }
 
 .link_profil::after {
-  content: url(../assets/utilisateur.png);
+  content: url(../assets/utilisateur_1.webp);
 }
 
 .link_carte::after {
-  content: url(../assets/francais.png);
+  content: url(../assets/francais.webp);
 }
 
 .link_information::after {
-  content: url(../assets/information.png);
+  content: url(../assets/information.webp);
 }
 
 .link_deconection::after {
-  content: url(../assets/deconnexion.png);
+  content: url(../assets/deconnexion.webp);
 }
 
 @media screen and (max-width: 767px) {
   .navbar {
     background: transparent;
     position: absolute;
+  }
+
+  .hide_nav li {
+    display: none;
   }
 
   ::after {
@@ -105,7 +105,7 @@ a {
     right: 0;
     top: 0;
     visibility: visible;
-    width: 34vw;
+    width: 29vw;
     height: 100vh;
   }
 
@@ -166,8 +166,8 @@ a {
     border: none;
     display: block;
     position: absolute;
-    top: 9rem;
-    right: 3rem;
+    top: 0.5rem;
+    right: 0.5rem;
   }
 
   .navbar_burger:hover {

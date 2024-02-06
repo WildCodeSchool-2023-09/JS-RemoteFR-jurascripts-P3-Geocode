@@ -12,12 +12,11 @@ CREATE TABLE `plug` (
 /* ******************************* Station ****************************** */
 
 CREATE TABLE `station` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `id` varchar(50) PRIMARY KEY NOT NULL,
   `nom_station` varchar(150),
   `localisation` varchar(150),
   `condition_acces` varchar(50),
   `horaires` varchar(255),
-  `id_station_itinerance`varchar(150),
   `consolidated_code_postal` int,
   `consolidated_commune` varchar(150)
  
@@ -30,7 +29,7 @@ CREATE TABLE `terminal` (
   `nom_operateur` VARCHAR(255),
   `puissance_nominale` int,
   `plug_id` int,
-  `station_id` int,
+  `station_id` varchar(50),
   `status` boolean DEFAULT true,
   `longitude` varchar(255),
   `latitude` varchar(50),
@@ -45,7 +44,7 @@ CREATE TABLE `terminal` (
 CREATE TABLE `reservation` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `date` timestamp NOT NULL,
-  `station_id` int NOT NULL,
+  `station_id` varchar(50),
   FOREIGN KEY (`station_id`)
    REFERENCES `station` (`id`)
 );
@@ -53,7 +52,7 @@ CREATE TABLE `reservation` (
 /* ******************************* Station_Reservation ****************************** */
 
 CREATE TABLE `station_reservation` (
-  `station_id` int,
+  `station_id` varchar(50),
   `reservation_id` int,
   FOREIGN KEY (`station_id`)
    REFERENCES `station` (`id`),

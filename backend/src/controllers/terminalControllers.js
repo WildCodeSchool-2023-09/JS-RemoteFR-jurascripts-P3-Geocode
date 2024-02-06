@@ -89,6 +89,20 @@ const readGeo = async (req, res, next) => {
   }
 };
 
+const readStationGeo = async (req, res, next) => {
+  try {
+    const terminal = await tables.terminal.stationGeoRead();
+
+    if (terminal == null) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).json(terminal);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 const findTerminalRead = async (req, res, next) => {
   try {
     const terminal = await tables.terminal.findTerminalByRead();
@@ -194,6 +208,26 @@ const editGeo = async (req, res, next) => {
   }
 };
 
+const editFindTerminal = async (req, res, next) => {
+  try {
+    const updatedData = req.body;
+    const terminalId = req.params.id;
+
+    const updateFindTerminal = await tables.terminal.updateTerminalById(
+      terminalId,
+      updatedData
+    );
+
+    if (updateFindTerminal.affectedRows === 0) {
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(204);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   browse,
   read,
@@ -207,4 +241,6 @@ module.exports = {
   editPower,
   editStatus,
   editGeo,
+  editFindTerminal,
+  readStationGeo,
 };
