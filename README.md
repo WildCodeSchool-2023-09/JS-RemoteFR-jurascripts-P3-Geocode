@@ -61,6 +61,7 @@ npm run dev
 
 - `db:migrate` : Run the database migration script
 - `db:seed` : Run the database seed script
+- `db:csv` : Run the database csv script
 - `dev` : Starts both servers (frontend + backend) in one terminal
 - `dev-front` : Starts the React frontend server
 - `dev-back` : Starts the Express backend server
