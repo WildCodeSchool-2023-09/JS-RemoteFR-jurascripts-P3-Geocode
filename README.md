@@ -85,10 +85,10 @@ npm run dev
 - _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
 - _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
 
-# Equipe Développeurs
+# Team Developers
 
-Nelson Almeida
-Xavier Mesnildrey
-Valentin Cardon
-Jordan Chatelain
-Cedric Bodereau
+- Nelson Almeida
+- Xavier Mesnildrey
+- Valentin Cardon
+- Jordan Chatelain
+- Cedric Bodereau
