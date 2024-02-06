@@ -1,4 +1,4 @@
-![Logo](./frontend/src/assets/logotitle.webp) 
+![Logo](./frontend/src/assets/logoreadme.webp) 
 
 # GEOCODE - Find an electric terminal
 
