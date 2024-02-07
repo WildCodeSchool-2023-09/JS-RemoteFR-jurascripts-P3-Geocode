@@ -1,5 +1,5 @@
-.popup_edit {
-  height: 370px;
+.popup_edit,
+.popup_add {
   width: 369px;
   border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.589);
@@ -16,19 +16,31 @@
   border: 3px solid white;
 }
 
-.popup_edit section {
+.popup_edit {
+  height: 370px;
+}
+
+.popup_add {
+  height: 430px;
+}
+
+.popup_edit section,
+.popup_add section {
   display: flex;
   flex-direction: column;
 }
 
 .popup_edit input,
-.popup_edit select {
+.popup_edit select,
+.popup_add input,
+.popup_add select {
   margin: 5px;
   width: 150px;
   font-weight: bold;
 }
 
-.popup_edit select {
+.popup_edit select,
+.popup_add select {
   cursor: pointer;
 }
 
@@ -58,10 +70,20 @@
   height: 322px;
 }
 
+.popup_add .wrap_left,
+.popup_add .wrap_right {
+  height: 420px;
+}
+
 .wrap_left {
   border-right: 1px solid white;
 }
 
 .wrap_right {
   border-left: 1px solid white;
+}
+
+.popup_add .c_btn_add {
+  display: flex;
+  margin: 10px 0;
 }
