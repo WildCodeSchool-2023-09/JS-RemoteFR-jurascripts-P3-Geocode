@@ -28,6 +28,7 @@ function Home() {
       <main>
         <Outlet />
       </main>
+      <hr className="space_home" />
     </div>
   );
 }

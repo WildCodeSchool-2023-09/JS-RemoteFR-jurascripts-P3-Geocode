@@ -3,12 +3,15 @@ import axios from "axios";
 import { Link, useLoaderData } from "react-router-dom";
 import "../css/Admin.css";
 import logo from "../assets/logo.webp";
+import PopupEditTerminal from "../components/PopupEditTerminal";
 
 function Admin() {
   const [isLoading, setIsLoading] = useState(false);
   const [datasBorn, setDatasBorn] = useState(null);
   const [originalDatasBorn, setOriginalDatasBorn] = useState(null);
   const [inputSearch, setInputSearch] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [idTerminal, setIdTerminal] = useState(null);
   const auth = useLoaderData();
 
   useEffect(() => {
@@ -27,10 +30,6 @@ function Admin() {
 
     fetchDatas();
   }, []);
-
-  // const handleClick = (id) => () => {
-
-  // };
 
   const handleChange = (e) => {
     const inputValue = e.target.value
@@ -68,6 +67,11 @@ function Admin() {
     });
 
     setDatasBorn(inputValue === "" ? originalDatasBorn : filteredBorn);
+  };
+
+  const handleClick = (id) => {
+    setIsEditing(!isEditing);
+    setIdTerminal(id);
   };
 
   return (
@@ -115,20 +119,42 @@ function Admin() {
                 {datasBorn &&
                   !isLoading &&
                   datasBorn.map((data) => (
-                    <tr key={data.id}>
-                      <div className="btn_modify_admin" />
-                      <td>{data.consolidated_commune}</td>
-                      <td>{data.consolidated_code_postal}</td>
-                      <td>{data.localisation}</td>
-                      <td>{data.nom_station}</td>
-                      <td>{data.nom_operateur}</td>
-                      <td>{data.prise_type_ef === 1 ? "Oui" : "Non"}</td>
-                      <td>{data.prise_type_2 === 1 ? "Oui" : "Non"}</td>
-                      <td>{data.prise_type_combo_ccs === 1 ? "Oui" : "Non"}</td>
-                      <td>{data.prise_type_chademo === 1 ? "Oui" : "Non"}</td>
-                      <td>{data.prise_type_autre === 1 ? "Oui" : "Non"}</td>
-                      <td>{data.status === 1 ? "Active" : "HS"}</td>
-                    </tr>
+                    <>
+                      <tr key={data.id}>
+                        <td>
+                          <button
+                            type="button"
+                            onClick={() => handleClick(data.id)}
+                            className="btn_modify_admin"
+                          >
+                            edit
+                          </button>
+                        </td>
+                        <td>{data.consolidated_commune}</td>
+                        <td>{data.consolidated_code_postal}</td>
+                        <td>{data.localisation}</td>
+                        <td>{data.nom_station}</td>
+                        <td>{data.nom_operateur}</td>
+                        <td>{data.prise_type_ef === 1 ? "Oui" : "Non"}</td>
+                        <td>{data.prise_type_2 === 1 ? "Oui" : "Non"}</td>
+                        <td>
+                          {data.prise_type_combo_ccs === 1 ? "Oui" : "Non"}
+                        </td>
+                        <td>{data.prise_type_chademo === 1 ? "Oui" : "Non"}</td>
+                        <td>{data.prise_type_autre === 1 ? "Oui" : "Non"}</td>
+                        <td>{data.status === 1 ? "Active" : "HS"}</td>
+                      </tr>
+                      {isEditing && idTerminal === data.id && (
+                        <div>
+                          <PopupEditTerminal
+                            idTerminal={idTerminal}
+                            setIsEditing={setIsEditing}
+                            setIdTerminal={setIdTerminal}
+                            data={data}
+                          />
+                        </div>
+                      )}
+                    </>
                   ))}
               </table>
             </div>

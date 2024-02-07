@@ -74,6 +74,11 @@ body {
   text-align: center;
 }
 
+.space_home {
+  border: none;
+  height: 1px;
+}
+
 @media screen and (min-width: 768px) {
   .logo_home {
     height: 98%;

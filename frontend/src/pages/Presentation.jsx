@@ -4,7 +4,7 @@ import car from "../assets/car.webp";
 
 function Presentation() {
   return (
-    <section className="presentation">
+    <section className="presentation_page">
       <h2 className="h2_presentation">
         Bienvenue sur GéoCode
         <br />
