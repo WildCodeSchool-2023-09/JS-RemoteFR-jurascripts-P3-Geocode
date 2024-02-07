@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import "../css/Admin.css";
 import logo from "../assets/logo.webp";
 import PopupEditTerminal from "../components/PopupEditTerminal";
+import AddPopup from "../components/AddPopup";
 
 function Admin() {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,6 +13,7 @@ function Admin() {
   const [inputSearch, setInputSearch] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [idTerminal, setIdTerminal] = useState(null);
+  const [isAddPopup, setIsAddPopup] = useState(false);
   const auth = useLoaderData();
 
   useEffect(() => {
@@ -74,6 +76,10 @@ function Admin() {
     setIdTerminal(id);
   };
 
+  const popupAdd = () => {
+    setIsAddPopup(!isAddPopup);
+  };
+
   return (
     <div className="nothing_admin">
       {auth?.is_admin === 1 && (
@@ -90,14 +96,20 @@ function Admin() {
               </p>
             )}
             {!isLoading && datasBorn && (
-              <input
-                className="search_admin"
-                type="text"
-                value={inputSearch}
-                placeholder="Rechercher une borne"
-                onChange={handleChange}
-              />
+              <div>
+                <input
+                  className="search_admin"
+                  type="text"
+                  value={inputSearch}
+                  placeholder="Rechercher une borne"
+                  onChange={handleChange}
+                />
+                <button type="button" onClick={popupAdd}>
+                  Ajouter une borne
+                </button>
+              </div>
             )}
+            {isAddPopup && <AddPopup popupAdd={popupAdd} />}
             <div className="separation_of_elements_admin">
               <table>
                 {datasBorn && !isLoading && (
