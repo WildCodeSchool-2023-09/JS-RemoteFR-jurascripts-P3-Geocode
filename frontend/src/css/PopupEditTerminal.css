@@ -1,0 +1,67 @@
+.popup_edit {
+  height: 370px;
+  width: 369px;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.589);
+  position: fixed;
+  top: 40vh;
+  left: 20vw;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  border: 3px solid white;
+}
+
+.popup_edit section {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup_edit input,
+.popup_edit select {
+  margin: 5px;
+  width: 150px;
+  font-weight: bold;
+}
+
+.popup_edit select {
+  cursor: pointer;
+}
+
+.btn_update {
+  font-weight: bold;
+  margin: 0 auto;
+  border-radius: 5px;
+  transition: 0.8s;
+  cursor: pointer;
+}
+
+.btn_update:hover {
+  color: white;
+  border-color: #7bd75a;
+  background-color: black;
+}
+
+.popup_edit hr {
+  width: 350px;
+  border-color: white;
+  rotate: 90deg;
+}
+
+.wrap_right,
+.wrap_left {
+  padding: 10px;
+  height: 322px;
+}
+
+.wrap_left {
+  border-right: 1px solid white;
+}
+
+.wrap_right {
+  border-left: 1px solid white;
+}

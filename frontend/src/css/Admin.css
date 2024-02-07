@@ -25,7 +25,12 @@
   align-items: center;
 }
 
+.search_admin {
+  margin-bottom: 8px;
+}
+
 .btn_modify_admin {
+  height: 24px;
   content: url(../assets/update.webp);
   margin: 0 10px;
 }

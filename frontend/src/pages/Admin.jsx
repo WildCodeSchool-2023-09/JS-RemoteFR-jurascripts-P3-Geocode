@@ -121,15 +121,10 @@ function Admin() {
                   datasBorn.map((data) => (
                     <>
                       <tr key={data.id}>
-                        <td>
-                          <button
-                            type="button"
-                            onClick={() => handleClick(data.id)}
-                            className="btn_modify_admin"
-                          >
-                            edit
-                          </button>
+                        <td onClick={() => handleClick(data.id)}>
+                          <p className="btn_modify_admin">.</p>
                         </td>
+
                         <td>{data.consolidated_commune}</td>
                         <td>{data.consolidated_code_postal}</td>
                         <td>{data.localisation}</td>
