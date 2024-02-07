@@ -118,14 +118,21 @@ const findTerminalRead = async (req, res, next) => {
 /* ******************************* POST ****************************** */
 
 const add = async (req, res, next) => {
-  const { nomOperateur, puissanceNominale, status, longitude, latitude } =
-    await req.body;
+  const {
+    nomOperateur,
+    stationId,
+    plugId,
+    puissanceNominale,
+    longitude,
+    latitude,
+  } = await req.body;
 
   try {
     const insertId = await tables.terminal.createTerminal(
       nomOperateur,
+      stationId,
+      plugId,
       puissanceNominale,
-      status,
       longitude,
       latitude
     );

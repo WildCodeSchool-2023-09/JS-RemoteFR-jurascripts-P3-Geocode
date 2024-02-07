@@ -60,14 +60,16 @@ router.get("/terminal/:id", terminalControllers.read);
 router.post("/terminal", terminalControllers.add);
 
 // ***** PUT
-router.put("terminal/operator/:id", terminalControllers.editOperator);
-router.put("terminal/power/:id", terminalControllers.editPower);
-router.put("terminal/status/:id", terminalControllers.editStatus);
-router.put("terminal/geo/:id", terminalControllers.editGeo);
-router.put("terminal/full/:id", terminalControllers.editFindTerminal);
+router.put("/terminal/operator/:id", terminalControllers.editOperator);
+router.put("/terminal/power/:id", terminalControllers.editPower);
+router.put("/terminal/status/:id", terminalControllers.editStatus);
+router.put("/terminal/geo/:id", terminalControllers.editGeo);
+router.put(
+  "/terminal/full/:id",
+  verifyToken,
+  terminalControllers.editFindTerminal
+);
 
 /* ************************************************************************* */
-
-router.use(verifyToken);
 
 module.exports = router;

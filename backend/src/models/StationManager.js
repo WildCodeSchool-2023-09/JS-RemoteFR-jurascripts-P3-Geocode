@@ -36,16 +36,40 @@ SELECT * FROM ${this.table} WHERE id = ?`,
   /* ******************************* Create ****************************** */
 
   async createStation(
+    idStationItinerance,
     nomStation,
     localisation,
     conditionAcces,
     horaires,
-    idStationItinerance
+    codePostal,
+    ville
   ) {
+    await this.database.query(
+      "SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0"
+    );
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (nom_station, localisation, condition_acces, horaires, id_station_itinerance)
-    VALUES (?, ?, ?, ?)`,
-      [nomStation, localisation, conditionAcces, horaires, idStationItinerance]
+      `INSERT INTO ${this.table} (
+        id,
+    nom_station,
+    localisation,
+    condition_acces,
+    horaires,
+    consolidated_code_postal,
+    consolidated_commune)
+    VALUES (?, ?, ?, ?, ? , ?, ?)`,
+      [
+        idStationItinerance,
+        nomStation,
+        localisation,
+        conditionAcces,
+        horaires,
+        codePostal,
+        ville,
+      ]
+    );
+
+    await this.database.query(
+      "SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1)"
     );
     return result.insertId;
   }

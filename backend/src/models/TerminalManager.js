@@ -81,18 +81,24 @@ GROUP BY s.id`
 
   /* ******************************* Create ****************************** */
 
-  async createStation(
-    nomOperator,
-    power,
+  async createTerminal(
+    nomOperateur,
+    stationId,
+    plugId,
+    puissanceNominale,
     longitude,
-    latitude,
-    codePostal,
-    ville
+    latitude
   ) {
+    await this.database.query(
+      "SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0"
+    );
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (nom_operateur, puissance_nominale, longitude, latitude, consolidated_code_postal, consolidated_ville )
-    VALUES (?, ?, ?,?)`,
-      [nomOperator, power, longitude, latitude, codePostal, ville]
+      `INSERT INTO ${this.table} (nom_operateur, station_id, plug_id, puissance_nominale, longitude, latitude)
+    VALUES (?, ?, ?,?, ?, ?)`,
+      [nomOperateur, stationId, plugId, puissanceNominale, longitude, latitude]
+    );
+    await this.database.query(
+      "SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0"
     );
     return result.insertId;
   }
