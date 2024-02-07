@@ -96,7 +96,7 @@ function Admin() {
               </p>
             )}
             {!isLoading && datasBorn && (
-              <div>
+              <div className="admin_c_search_btn">
                 <input
                   className="search_admin"
                   type="text"
