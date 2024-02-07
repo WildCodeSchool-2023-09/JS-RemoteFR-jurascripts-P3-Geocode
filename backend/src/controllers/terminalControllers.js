@@ -210,12 +210,36 @@ const editGeo = async (req, res, next) => {
 
 const editFindTerminal = async (req, res, next) => {
   try {
-    const updatedData = req.body;
+    const {
+      nomOperateur,
+      status,
+      nomStation,
+      localisation,
+      consolidatedCodePostal,
+      consolidatedCommune,
+      priseTypeEf,
+      priseType2,
+      priseTypeComboCcs,
+      priseTypeChademo,
+      priseTypeAutre,
+    } = req.body;
     const terminalId = req.params.id;
 
     const updateFindTerminal = await tables.terminal.updateTerminalById(
       terminalId,
-      updatedData
+      {
+        nomOperateur,
+        status,
+        nomStation,
+        localisation,
+        consolidatedCodePostal,
+        consolidatedCommune,
+        priseTypeEf,
+        priseType2,
+        priseTypeComboCcs,
+        priseTypeChademo,
+        priseTypeAutre,
+      }
     );
 
     if (updateFindTerminal.affectedRows === 0) {

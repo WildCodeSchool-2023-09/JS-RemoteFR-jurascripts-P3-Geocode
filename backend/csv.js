@@ -5,6 +5,7 @@ const Papa = require("papaparse");
 const fs = require("fs");
 const database = require("./database/client");
 const plugData = require("./data/plugData");
+const userData = require("./data/userData");
 
 const csv = async () => {
   try {
@@ -165,6 +166,7 @@ const csv = async () => {
     await database.query("truncate station");
     await database.query("truncate plug");
     await database.query("truncate terminal");
+    await database.query("truncate user");
 
     await database.query(
       "SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1)"
@@ -254,6 +256,26 @@ const csv = async () => {
     await Promise.all(terminalPromises);
 
     console.info("All rows inserted into terminal table");
+
+    /* ******************************* User ****************************** */
+
+    const userPromises = userData.map((data) => {
+      return database.query(
+        "INSERT INTO user (firstname, lastname, nickname, email, password, city, register_date, is_admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        [
+          data.firstname,
+          data.lastname,
+          data.nickname,
+          data.email,
+          data.password,
+          data.city,
+          data.register_date,
+          data.is_admin,
+        ]
+      );
+    });
+    await Promise.all(userPromises);
+    console.info("All rows inserted into user table");
 
     /* ******************************* End Database ****************************** */
 
