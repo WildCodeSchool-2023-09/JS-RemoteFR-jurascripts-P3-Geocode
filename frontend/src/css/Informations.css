@@ -61,3 +61,10 @@
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 1024px) {
+  .plugtable_informations {
+    width: 100%;
+    margin: 0;
+  }
+}
