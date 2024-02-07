@@ -81,18 +81,24 @@ GROUP BY s.id`
 
   /* ******************************* Create ****************************** */
 
-  async createStation(
-    nomOperator,
-    power,
+  async createTerminal(
+    nomOperateur,
+    stationId,
+    plugId,
+    puissanceNominale,
     longitude,
-    latitude,
-    codePostal,
-    ville
+    latitude
   ) {
+    await this.database.query(
+      "SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0"
+    );
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (nom_operateur, puissance_nominale, longitude, latitude, consolidated_code_postal, consolidated_ville )
-    VALUES (?, ?, ?,?)`,
-      [nomOperator, power, longitude, latitude, codePostal, ville]
+      `INSERT INTO ${this.table} (nom_operateur, station_id, plug_id, puissance_nominale, longitude, latitude)
+    VALUES (?, ?, ?,?, ?, ?)`,
+      [nomOperateur, stationId, plugId, puissanceNominale, longitude, latitude]
+    );
+    await this.database.query(
+      "SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0"
     );
     return result.insertId;
   }
@@ -141,9 +147,16 @@ GROUP BY s.id`
     INNER JOIN plug AS p ON t.plug_id = p.id
     SET 
       t.nom_operateur = ?,
+      t.puissance_nominale = ?,
+      t.plug_id = ?,
+      t.station_id = ?,
       t.status = ?,
+      t.longitude = ?,
+      t.latitude = ?,
       s.nom_station = ?,
       s.localisation = ?,
+      s.condition_acces = ?,
+      s.horaires = ?,
       s.consolidated_code_postal = ?,
       s.consolidated_commune = ?,
       p.prise_type_ef = ?,
@@ -154,17 +167,24 @@ GROUP BY s.id`
     WHERE t.id = ?
   `,
       [
-        updatedData.nomOperateur,
+        updatedData.nom_operateur,
+        updatedData.puissance_nominale,
+        updatedData.plug_id,
+        updatedData.station_id,
         updatedData.status,
-        updatedData.nomStation,
+        updatedData.longitude,
+        updatedData.latitude,
+        updatedData.nom_station,
         updatedData.localisation,
-        updatedData.consolidatedCodePostal,
-        updatedData.consolidatedCommune,
-        updatedData.priseTypeEf,
-        updatedData.priseType2,
-        updatedData.priseTypeComboCcs,
-        updatedData.priseTypeChademo,
-        updatedData.priseTypeAutre,
+        updatedData.condition_acces,
+        updatedData.horaires,
+        updatedData.consolidated_code_postal,
+        updatedData.consolidated_commune,
+        updatedData.prise_type_ef,
+        updatedData.prise_type_2,
+        updatedData.prise_type_combo_ccs,
+        updatedData.prise_type_chademo,
+        updatedData.prise_type_autre,
         terminalId,
       ]
     );

@@ -118,14 +118,21 @@ const findTerminalRead = async (req, res, next) => {
 /* ******************************* POST ****************************** */
 
 const add = async (req, res, next) => {
-  const { nomOperateur, puissanceNominale, status, longitude, latitude } =
-    await req.body;
+  const {
+    nomOperateur,
+    stationId,
+    plugId,
+    puissanceNominale,
+    longitude,
+    latitude,
+  } = await req.body;
 
   try {
     const insertId = await tables.terminal.createTerminal(
       nomOperateur,
+      stationId,
+      plugId,
       puissanceNominale,
-      status,
       longitude,
       latitude
     );
@@ -210,36 +217,12 @@ const editGeo = async (req, res, next) => {
 
 const editFindTerminal = async (req, res, next) => {
   try {
-    const {
-      nomOperateur,
-      status,
-      nomStation,
-      localisation,
-      consolidatedCodePostal,
-      consolidatedCommune,
-      priseTypeEf,
-      priseType2,
-      priseTypeComboCcs,
-      priseTypeChademo,
-      priseTypeAutre,
-    } = req.body;
+    const updatedData = req.body;
     const terminalId = req.params.id;
 
     const updateFindTerminal = await tables.terminal.updateTerminalById(
       terminalId,
-      {
-        nomOperateur,
-        status,
-        nomStation,
-        localisation,
-        consolidatedCodePostal,
-        consolidatedCommune,
-        priseTypeEf,
-        priseType2,
-        priseTypeComboCcs,
-        priseTypeChademo,
-        priseTypeAutre,
-      }
+      updatedData
     );
 
     if (updateFindTerminal.affectedRows === 0) {
