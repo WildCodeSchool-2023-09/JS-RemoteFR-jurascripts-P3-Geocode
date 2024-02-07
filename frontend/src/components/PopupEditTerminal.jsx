@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import "../css/PopupEditTerminal.css";
 
 function PopupEditTerminal({ idTerminal, setIsEditing, setIdTerminal, data }) {
   const refCommune = useRef();
@@ -57,6 +58,9 @@ function PopupEditTerminal({ idTerminal, setIsEditing, setIdTerminal, data }) {
           ),
           priseTypeAutre: BooleanPlugReverse(refPriseTypeAutre.current.value),
           status: BooleanStatutReverse(refStatus.current.value),
+        },
+        {
+          withCredentials: true,
         }
       )
       .then(() => {
@@ -68,113 +72,130 @@ function PopupEditTerminal({ idTerminal, setIsEditing, setIdTerminal, data }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        ref={refCommune}
-        type="text"
-        defaultValue={data.consolidated_commune}
-      />
-      <input
-        ref={refCodePostal}
-        type="text"
-        defaultValue={data.consolidated_code_postal}
-      />
-      <input
-        ref={refLocalisation}
-        type="text"
-        defaultValue={data.localisation}
-      />
-      <input ref={refNomStation} type="text" defaultValue={data.nom_station} />
-      <input
-        ref={refNomOperateur}
-        type="text"
-        defaultValue={data.nom_operateur}
-      />
-      <select>
-        <option ref={refPriseTypeEf} value={BooleanPlug(data.prise_type_ef)}>
-          Default: {BooleanPlug(data.prise_type_ef)}
-        </option>
-        <option ref={refPriseTypeEf} value="Non">
-          Non
-        </option>
-        <option ref={refPriseTypeEf} value="Oui">
-          Oui
-        </option>
-      </select>
-      <select>
-        <option ref={refPriseType2} value={BooleanPlug(data.prise_type_2)}>
-          Default: {BooleanPlug(data.prise_type_2)}
-        </option>
-        <option ref={refPriseType2} value="Non">
-          Non
-        </option>
-        <option ref={refPriseType2} value="Oui">
-          Oui
-        </option>
-      </select>
-      <select>
-        <option
-          ref={refPriseTypeComboCcs}
-          value={BooleanPlug(data.prise_type_combo_ccs)}
-        >
-          Default: {BooleanPlug(data.prise_type_combo_ccs)}
-        </option>
-        <option ref={refPriseTypeComboCcs} value="Non">
-          Non
-        </option>
-        <option ref={refPriseTypeComboCcs} value="Oui">
-          Oui
-        </option>
-      </select>
-      <select>
-        <option
-          ref={refPriseTypeChademo}
-          value={BooleanPlug(data.prise_type_chademo)}
-        >
-          Default: {BooleanPlug(data.prise_type_chademo)}
-        </option>
-        <option ref={refPriseTypeChademo} value="Non">
-          Non
-        </option>
-        <option ref={refPriseTypeChademo} value="Oui">
-          Oui
-        </option>
-      </select>
-      <select>
-        <option
-          ref={refPriseTypeAutre}
-          value={BooleanPlug(data.prise_type_autre)}
-        >
-          Default: {BooleanPlug(data.prise_type_autre)}
-        </option>
-        <option ref={refPriseTypeAutre} value="Non">
-          Non
-        </option>
-        <option ref={refPriseTypeAutre} value="Oui">
-          Oui
-        </option>
-      </select>
-      <select>
-        <option ref={refStatus} value={BooleanStatut(data.status)}>
-          Default: {BooleanStatut(data.status)}
-        </option>
-        <option ref={refStatus} value="HS">
-          HS
-        </option>
-        <option ref={refStatus} value="Active">
-          Active
-        </option>
-      </select>
-
-      <button type="submit">Modifier</button>
-      <input
-        type="button"
-        value="Annuler"
-        onClick={() => {
-          setIsEditing(false);
-          setIdTerminal(null);
-        }}
-      />
+    <form className="popup_edit" onSubmit={handleSubmit}>
+      <section className="wrap_left">
+        Ville
+        <input
+          ref={refCommune}
+          type="text"
+          defaultValue={data.consolidated_commune}
+        />
+        <br />
+        Code Postal
+        <input
+          ref={refCodePostal}
+          type="text"
+          defaultValue={data.consolidated_code_postal}
+        />
+        <br />
+        Adresse
+        <input
+          ref={refLocalisation}
+          type="text"
+          defaultValue={data.localisation}
+        />
+        <br />
+        Station
+        <input
+          ref={refNomStation}
+          type="text"
+          defaultValue={data.nom_station}
+        />
+        <br />
+        Opérateur
+        <input
+          ref={refNomOperateur}
+          type="text"
+          defaultValue={data.nom_operateur}
+        />
+      </section>
+      <section className="wrap_right">
+        Type Ef :
+        <select>
+          <option ref={refPriseTypeEf} value={BooleanPlug(data.prise_type_ef)}>
+            Default: {BooleanPlug(data.prise_type_ef)}
+          </option>
+          <option ref={refPriseTypeEf} value="Non">
+            Non
+          </option>
+          <option ref={refPriseTypeEf} value="Oui">
+            Oui
+          </option>
+        </select>
+        Type 2 :
+        <select>
+          <option ref={refPriseType2} value={BooleanPlug(data.prise_type_2)}>
+            Default: {BooleanPlug(data.prise_type_2)}
+          </option>
+          <option ref={refPriseType2} value="Non">
+            Non
+          </option>
+          <option ref={refPriseType2} value="Oui">
+            Oui
+          </option>
+        </select>
+        Combo CCS :
+        <select>
+          <option
+            ref={refPriseTypeComboCcs}
+            value={BooleanPlug(data.prise_type_combo_ccs)}
+          >
+            Default: {BooleanPlug(data.prise_type_combo_ccs)}
+          </option>
+          <option ref={refPriseTypeComboCcs} value="Non">
+            Non
+          </option>
+          <option ref={refPriseTypeComboCcs} value="Oui">
+            Oui
+          </option>
+        </select>
+        Type Chademo :
+        <select>
+          <option
+            ref={refPriseTypeChademo}
+            value={BooleanPlug(data.prise_type_chademo)}
+          >
+            Default: {BooleanPlug(data.prise_type_chademo)}
+          </option>
+          <option ref={refPriseTypeChademo} value="Non">
+            Non
+          </option>
+          <option ref={refPriseTypeChademo} value="Oui">
+            Oui
+          </option>
+        </select>
+        Type Autre :
+        <select>
+          <option
+            ref={refPriseTypeAutre}
+            value={BooleanPlug(data.prise_type_autre)}
+          >
+            Default: {BooleanPlug(data.prise_type_autre)}
+          </option>
+          <option ref={refPriseTypeAutre} value="Non">
+            Non
+          </option>
+          <option ref={refPriseTypeAutre} value="Oui">
+            Oui
+          </option>
+        </select>
+        <br />
+        Statut :
+        <select>
+          <option ref={refStatus} value={BooleanStatut(data.status)}>
+            Default: {BooleanStatut(data.status)}
+          </option>
+          <option ref={refStatus} value="HS">
+            HS
+          </option>
+          <option ref={refStatus} value="Active">
+            Active
+          </option>
+        </select>
+      </section>
+      <button className="btn_update" type="submit">
+        Modifier
+      </button>
     </form>
   );
 }
