@@ -43,3 +43,35 @@
     bottom: calc(100vh / 2 - 46px);
   }
 }
+
+.marker_contenair {
+  background-color: var(--background-white);
+  padding: 5px;
+}
+
+.marker_contenair h3 {
+  color: var(--color-deep-green);
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.marker_contenair p {
+  font-size: 1em;
+  margin: 1px 0;
+  padding: 0;
+}
+
+.marker_contenair button {
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.8s;
+  cursor: pointer;
+}
+
+.marker_contenair button:hover {
+  color: white;
+  border-color: #7bd75a;
+  background-color: black;
+}

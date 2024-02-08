@@ -29,7 +29,7 @@ function Nav() {
             className="navbar_link link_profil"
             onClick={handleShowLinks}
           >
-            {token ? "Profile" : "Connexion"}
+            {token ? "Profil" : "Connexion"}
           </Link>
         </li>
         <li className="navbar_item slide_in_down_3">
@@ -60,7 +60,7 @@ function Nav() {
                 logout();
               }}
             >
-              Déconexion
+              Déconnexion
             </Link>
           </li>
         )}
