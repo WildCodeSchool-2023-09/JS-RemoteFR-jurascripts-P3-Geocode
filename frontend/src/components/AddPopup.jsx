@@ -2,6 +2,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { useRef, useState } from "react";
 import plugData from "../Data/plugData";
+import "../css/PopupEditTerminal.css";
 
 function AddPopup({ popupAdd }) {
   const refNomStation = useRef();
@@ -21,11 +22,6 @@ function AddPopup({ popupAdd }) {
   const [combo, setCombo] = useState("Non");
   const [chademo, setChademo] = useState("Non");
   const [autre, setAutre] = useState("Non");
-
-  //   const BooleanPlug = (value) => {
-  //     const result = value === 0 ? "Non" : "Oui";
-  //     return result;
-  //   };
 
   const BooleanPlugReverse = (value) => {
     const result = value === "Non" ? 0 : 1;
@@ -75,71 +71,76 @@ function AddPopup({ popupAdd }) {
 
   return (
     <section>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="nomStation">Nom de la station</label>
-        <input type="text" id="nomStation" ref={refNomStation} required />
-        <label htmlFor="localisation">Localisation</label>
-        <input type="text" id="localisation" ref={refLocalisation} required />
-        <label htmlFor="conditionAcces">Condition d'accès</label>
-        <input
-          type="text"
-          id="conditionAcces"
-          ref={refConditionAcces}
-          required
-        />
-        <label htmlFor="horaires">Horaires</label>
-        <input type="text" id="horaires" ref={refHoraires} required />
-        <label htmlFor="idStationItinerance">ID Station itinérance</label>
-        <input
-          type="text"
-          id="idStationItinerance"
-          ref={refIdStationItinerance}
-          required
-        />
-        <label htmlFor="codePostal">Code postal</label>
-        <input type="text" id="codePostal" ref={refCodePostal} required />
-        <label htmlFor="ville">Ville</label>
-        <input type="text" id="ville" ref={refVille} required />
-        <label htmlFor="nomOperateur">Nom de l'opérateur</label>
-        <input type="text" id="nomOperateur" ref={refNomOperateur} required />
-        <label htmlFor="power">Puissance nominale</label>
-        <input type="text" id="power" ref={refPower} required />
-        <label htmlFor="longitude">Longitude</label>
-        <input type="text" id="longitude" ref={refLongitude} required />
-        <label htmlFor="latitude">Latitude</label>
-        <input type="text" id="latitude" ref={refLatitude} required />
-        <label htmlFor="TypeEF">Prise EF</label>
-        <select value={typeEf} onChange={(e) => setTypeEf(e.target.value)}>
-          <option value="Non">Non</option>
-          <option value="Oui">Oui</option>
-        </select>
-        <label htmlFor="Type2">Prise type 2</label>
-        <select value={type2} onChange={(e) => setType2(e.target.value)}>
-          <option value="Non">Non</option>
-          <option value="Oui">Oui</option>
-        </select>
-        <label htmlFor="Combo">Prise Combo CCS</label>
-        <select value={combo} onChange={(e) => setCombo(e.target.value)}>
-          <option value="Non">Non</option>
-          <option value="Oui">Oui</option>
-        </select>
-        <label htmlFor="Chademo">Prise Chademo</label>
-        <select value={chademo} onChange={(e) => setChademo(e.target.value)}>
-          <option value="Non">Non</option>
-          <option value="Oui">Oui</option>
-        </select>
-        <label htmlFor="Autre">Autre prise</label>
-        <select value={autre} onChange={(e) => setAutre(e.target.value)}>
-          <option value="Non">Non</option>
-          <option value="Oui">Oui</option>
-        </select>
-
-        <button type="submit" onClick={handleSubmit}>
-          Ajouter
-        </button>
-        <button type="button" onClick={popupAdd}>
-          Annuler
-        </button>
+      <form className="popup_add" onSubmit={handleSubmit}>
+        <section className="wrap_left">
+          <label htmlFor="nomStation">Nom de la station</label>
+          <input type="text" id="nomStation" ref={refNomStation} required />
+          <label htmlFor="localisation">Localisation</label>
+          <input type="text" id="localisation" ref={refLocalisation} required />
+          <label htmlFor="conditionAcces">Condition d'accès</label>
+          <input
+            type="text"
+            id="conditionAcces"
+            ref={refConditionAcces}
+            required
+          />
+          <label htmlFor="horaires">Horaires</label>
+          <input type="text" id="horaires" ref={refHoraires} required />
+          <label htmlFor="idStationItinerance">ID Station itinérance</label>
+          <input
+            type="text"
+            id="idStationItinerance"
+            ref={refIdStationItinerance}
+            required
+          />
+          <label htmlFor="codePostal">Code postal</label>
+          <input type="text" id="codePostal" ref={refCodePostal} required />
+          <label htmlFor="ville">Ville</label>
+          <input type="text" id="ville" ref={refVille} required />
+          <label htmlFor="nomOperateur">Nom de l'opérateur</label>
+          <input type="text" id="nomOperateur" ref={refNomOperateur} required />
+        </section>
+        <section className="wrap_right">
+          <label htmlFor="power">Puissance nominale</label>
+          <input type="text" id="power" ref={refPower} required />
+          <label htmlFor="longitude">Longitude</label>
+          <input type="text" id="longitude" ref={refLongitude} required />
+          <label htmlFor="latitude">Latitude</label>
+          <input type="text" id="latitude" ref={refLatitude} required />
+          <label htmlFor="TypeEF">Prise EF</label>
+          <select value={typeEf} onChange={(e) => setTypeEf(e.target.value)}>
+            <option value="Non">Non</option>
+            <option value="Oui">Oui</option>
+          </select>
+          <label htmlFor="Type2">Prise type 2</label>
+          <select value={type2} onChange={(e) => setType2(e.target.value)}>
+            <option value="Non">Non</option>
+            <option value="Oui">Oui</option>
+          </select>
+          <label htmlFor="Combo">Prise Combo CCS</label>
+          <select value={combo} onChange={(e) => setCombo(e.target.value)}>
+            <option value="Non">Non</option>
+            <option value="Oui">Oui</option>
+          </select>
+          <label htmlFor="Chademo">Prise Chademo</label>
+          <select value={chademo} onChange={(e) => setChademo(e.target.value)}>
+            <option value="Non">Non</option>
+            <option value="Oui">Oui</option>
+          </select>
+          <label htmlFor="Autre">Autre prise</label>
+          <select value={autre} onChange={(e) => setAutre(e.target.value)}>
+            <option value="Non">Non</option>
+            <option value="Oui">Oui</option>
+          </select>
+          <div className="c_btn_add">
+            <button className="btn_update" type="submit" onClick={handleSubmit}>
+              Ajouter
+            </button>
+            <button className="btn_update" type="button" onClick={popupAdd}>
+              Annuler
+            </button>
+          </div>
+        </section>
       </form>
     </section>
   );
