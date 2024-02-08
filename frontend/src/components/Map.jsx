@@ -30,20 +30,35 @@ export default function Map() {
       center: [city.lng, city.lat],
       zoom: 5,
     });
+
     fetchBornes.forEach((coordinate) => {
       const longitude = parseFloat(coordinate.longitude);
       const latitude = parseFloat(coordinate.latitude);
 
       // Check if longitude and latitude are valid numbers
       if (!Number.isNaN(longitude) && !Number.isNaN(latitude)) {
-        new maptilersdk.Marker({ color: "#48bd7e" })
+        const marker = new maptilersdk.Marker({ color: "#48bd7e" })
           .setLngLat([longitude, latitude])
           .addTo(map.current);
+
+        // Add a popup to the marker
+        const popup = new maptilersdk.Popup({ offset: 30 }).setHTML(
+          `<div class="marker_contenair" ><h3 >${coordinate.nom_station}</h3><p>${coordinate.localisation}</p>
+          <p>${coordinate.consolidated_code_postal} ${coordinate.consolidated_commune}</p>
+          <p>${coordinate.horaires} </p> <button>Plus d'infos</button></div>`
+        );
+
+        marker.setPopup(popup);
+
+        // Event listener for marker click
+        marker.on("click", () => {
+          marker.togglePopup();
+        });
       } else {
         console.error("Invalid coordinates:", coordinate);
       }
     });
-  }, [city.lng, city.lat, zoom]);
+  }, [city.lng, city.lat, zoom, fetchBornes]);
 
   return (
     <div className="map-wrap">
