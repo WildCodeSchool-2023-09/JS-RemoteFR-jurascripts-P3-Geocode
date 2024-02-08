@@ -39,6 +39,7 @@ function PopupEditTerminal({ idTerminal, setIsEditing, setIdTerminal, data }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const token = sessionStorage.getItem("Token");
     axios
       .put(
         `${import.meta.env.VITE_BACKEND_URL}/api/terminal/full/${idTerminal}`,
@@ -60,7 +61,9 @@ function PopupEditTerminal({ idTerminal, setIsEditing, setIdTerminal, data }) {
           status: BooleanStatutReverse(refStatus.current.value),
         },
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token.replace(/['"]+/g, "")}`,
+          },
         }
       )
       .then(() => {
