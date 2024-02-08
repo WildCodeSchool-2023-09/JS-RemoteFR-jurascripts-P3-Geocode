@@ -34,6 +34,9 @@ app.use(
       "http://mysite.com",
       "http://another-domain.com",
     ],
+    exposedHeaders: "Authorization",
+
+    credentials: true,
   })
 );
 

@@ -45,22 +45,22 @@ const readLocation = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   const {
+    idStationItinerance,
     nomStation,
     localisation,
     conditionAcces,
     horaires,
-    idStationItinerance,
     codePostal,
     ville,
   } = await req.body;
 
   try {
     const insertId = await tables.station.createStation(
+      idStationItinerance,
       nomStation,
       localisation,
       conditionAcces,
       horaires,
-      idStationItinerance,
       codePostal,
       ville
     );
