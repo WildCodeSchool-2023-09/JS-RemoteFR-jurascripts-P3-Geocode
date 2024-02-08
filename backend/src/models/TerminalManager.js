@@ -71,7 +71,7 @@ SELECT * FROM ${this.table} WHERE id = ?`,
 
   async stationGeoRead() {
     const [rows] = await this.database.query(
-      `SELECT MAX(t.id) AS id, s.id AS station_id, MAX(t.longitude) AS longitude, MAX(t.latitude) AS latitude
+      `SELECT MAX(t.id) AS id, s.id AS station_id, MAX(t.longitude) AS longitude, MAX(t.latitude) AS latitude, s.nom_station, s.localisation, s.condition_acces, s.horaires, s.consolidated_code_postal, s.consolidated_commune
 FROM station AS s
 LEFT JOIN terminal AS t ON t.station_id = s.id
 GROUP BY s.id`
